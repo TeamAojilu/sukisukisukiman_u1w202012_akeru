@@ -3,7 +3,12 @@ guid: 62b6152a12f9d884f86037aa5cd70f9e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_isPlaying: {fileID: -8260053897077216964, guid: ad38d0245e53d4e7bb12beedddd95bf5,
+      type: 2}
+  - m_holding: {fileID: 11400000, guid: ae69e1867a55342f484385ee7d05afd3, type: 2}
+  - m_onPiecePlaced: {fileID: 11400000, guid: e2d38f551756e684fa762efd712d62f8, type: 2}
+  - m_onPieceTrashed: {fileID: 11400000, guid: fb6a6a230368b47589ad981f3b23b443, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

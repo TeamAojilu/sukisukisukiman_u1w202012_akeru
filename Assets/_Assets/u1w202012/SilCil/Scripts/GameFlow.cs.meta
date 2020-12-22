@@ -3,7 +3,12 @@ guid: 7666d9582a1b7504385e3565fa895b88
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_isPlaying: {fileID: 11400000, guid: ad38d0245e53d4e7bb12beedddd95bf5, type: 2}
+  - m_isRanking: {fileID: 11400000, guid: db6b1aabc4e214470b8abb296202929c, type: 2}
+  - m_isHoldingPiece: {fileID: 11400000, guid: ae69e1867a55342f484385ee7d05afd3, type: 2}
+  - m_score: {fileID: 11400000, guid: 36702277a769a433cab29962a8764605, type: 2}
+  - m_time: {fileID: 11400000, guid: b9bef989ea6f84f25bda28e5446bfd52, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
