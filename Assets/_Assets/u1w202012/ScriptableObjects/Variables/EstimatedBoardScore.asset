@@ -37,7 +37,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ce84787aec64f42b3f81868361589b, type: 3}
   m_Name: EstimatedBoardScore
   m_EditorClassIdentifier: 
-  m_value: 44
+  m_value: 10
   m_onValueChanged: {fileID: -6834521582861326114}
 --- !u!114 &6379461148048769281
 MonoBehaviour:
