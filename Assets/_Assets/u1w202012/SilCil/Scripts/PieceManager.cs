@@ -30,13 +30,20 @@ namespace Unity1Week202012
                 HoldingUpdate();
             }
 
-            if (m_holding == false && Input.GetMouseButtonDown(0))
+            if (m_holding == false && Services.PointerInput.PointerDown())
             {
                 TryHoldPiece();
             }
-            else if(m_holding == true && Input.GetMouseButtonUp(0))
+            else if(m_holding == true && Services.PointerInput.PointerUp())
             {
-                UnHoldPiece();
+                if(Services.PointerInput.Flick(out Vector2 speed))
+                {
+                    print($"Flick: {speed}");
+                }
+                else
+                {
+                    UnHoldPiece();
+                }
             }
         }
 
