@@ -1,5 +1,4 @@
 ﻿using SilCilSystem.Variables;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -17,7 +16,7 @@ namespace Unity1Week202012
         private Piece m_holdingPiece = default;
         private Vector3 m_offset = default;
         private Vector2Int m_startPosition = default;
-
+        
         private void Start()
         {
             m_camera = Camera.main;
@@ -58,19 +57,19 @@ namespace Unity1Week202012
 
         private void UnHoldPiece()
         {
-            var origin = GetOriginPosition(m_holdingPiece);
+            var origin = Services.PiecePosition.GetOriginPosition(m_holdingPiece);
 
             // 複数候補で検索したほうが操作性が良くなるかもしれないが、とりあえず一つでやる.
-            var positions = GetHoldingPiecePositions(origin).ToArray();
+            var positions = Services.PiecePosition.GetBlockPositions(m_holdingPiece, origin).ToArray();
             if (Services.Board.CanPlace(positions))
             {
-                SetPiecePosition(m_holdingPiece, origin);
+                Services.PiecePosition.SetPiecePosition(m_holdingPiece, origin);
                 m_onPiecePlaced?.Publish();
             }
             else
             {
-                SetPiecePosition(m_holdingPiece, m_startPosition);
-                positions = GetHoldingPiecePositions(m_startPosition).ToArray();
+                Services.PiecePosition.SetPiecePosition(m_holdingPiece, m_startPosition);
+                positions = Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition).ToArray();
             }
 
             m_holding.Value = false;
@@ -89,26 +88,10 @@ namespace Unity1Week202012
             m_holding.Value = true;
             m_holdingPiece = piece;
             m_offset = m_holdingPiece.CashedTransform.position - mousePos;
-            m_startPosition = GetOriginPosition(m_holdingPiece);
-            Services.Board.Remove(GetHoldingPiecePositions(m_startPosition));
+            m_startPosition = Services.PiecePosition.GetOriginPosition(m_holdingPiece);
+            Services.Board.Remove(Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition));
         }
-
-        private IEnumerable<Vector2Int> GetHoldingPiecePositions(Vector2Int origin)
-        {
-            return m_holdingPiece.m_positions.Select(p => p + origin);
-        }
-
-        private Vector2Int GetOriginPosition(Piece piece)
-        {
-            var pos = m_holdingPiece.CashedTransform.position;
-            return new Vector2Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y)); // これは操作性に関わる項目なので要調整.
-        }
-
-        private void SetPiecePosition(Piece piece, Vector2Int pos)
-        {
-            piece.CashedTransform.position = new Vector3(pos.x, pos.y, 0f);
-        }
-
+        
         private Vector3 GetMouseWorldPosition()
         {
             return m_camera.ScreenToWorldPoint(Input.mousePosition);
