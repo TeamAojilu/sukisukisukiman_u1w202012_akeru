@@ -624,7 +624,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: addScore:44
+  m_text: addScore:10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time: 24.24386'
+  m_text: 'Time: 7.10'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -889,7 +889,7 @@ MonoBehaviour:
   m_floatValues:
   - m_key: Time
     m_format:
-      m_value: 
+      m_value: 0.00
       m_variable: {fileID: 0}
     m_variable: {fileID: 8500491068247207206, guid: b9bef989ea6f84f25bda28e5446bfd52,
       type: 2}

@@ -19,7 +19,7 @@ namespace Unity1Week202012
             m_IsRankingChenged.Subscribe((isRanking) => {
                 if (!isRanking) return;
                 OpenRanking();
-            });
+            }).DisposeOnDestroy(gameObject);
             //IsRankingをfalseにする処理は、直接ボタンに登録した
         }
         void OpenRanking()
