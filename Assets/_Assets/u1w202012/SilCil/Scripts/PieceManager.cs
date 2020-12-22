@@ -9,6 +9,8 @@ namespace Unity1Week202012
     {
         [SerializeField] private ReadonlyBool m_isPlaying = default;
         [SerializeField] private VariableBool m_holding = default;
+        [SerializeField] private GameEvent m_onPiecePlaced = default;
+        [SerializeField] private GameEvent m_onPieceTrashed = default;
         [SerializeField] private LayerMask m_pieceLayer = default;
 
         private Camera m_camera = default;
@@ -39,6 +41,7 @@ namespace Unity1Week202012
                 if(Services.PointerInput.Flick(out Vector2 speed))
                 {
                     print($"Flick: {speed}");
+                    m_onPieceTrashed?.Publish();
                 }
                 else
                 {
@@ -62,6 +65,7 @@ namespace Unity1Week202012
             if (Services.Board.CanPlace(positions))
             {
                 SetPiecePosition(m_holdingPiece, origin);
+                m_onPiecePlaced?.Publish();
             }
             else
             {
