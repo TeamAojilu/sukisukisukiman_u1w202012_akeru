@@ -9,6 +9,7 @@ namespace Unity1Week202012
     {
         [Header("Variables")]
         [SerializeField] private VariableBool m_isPlaying = default;
+        [SerializeField] private VariableBool m_isHoldingPiece = default;
         [SerializeField] private VariableInt m_score = default;
         [SerializeField] private VariableFloat m_time = default;
 
@@ -32,6 +33,7 @@ namespace Unity1Week202012
         private void InitializeVariables()
         {
             m_isPlaying.Value = false;
+            m_isHoldingPiece.Value = false;
             m_score.Value = 0;
             m_time.Value = m_timeLimit;
         }
