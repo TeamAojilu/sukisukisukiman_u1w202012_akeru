@@ -19,11 +19,11 @@ namespace Unity1Week202012
         private void Awake()
         {
 
-            m_SubmitEvent.Subscribe(UpdateScore);
+            m_SubmitEvent.Subscribe(UpdateScore).DisposeOnDestroy(this.gameObject);
             if(m_isPlayingChenged!=null)m_isPlayingChenged.Subscribe((start)=> {
                 if (start) InitScore();
                 else UpdateHighScore();
-            });
+            }).DisposeOnDestroy(gameObject);
         }
 
         //スコアの更新
