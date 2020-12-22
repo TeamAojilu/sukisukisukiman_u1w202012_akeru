@@ -37,7 +37,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ce84787aec64f42b3f81868361589b, type: 3}
   m_Name: CurrentScore
   m_EditorClassIdentifier: 
-  m_value: 0
+  m_value: 273
   m_onValueChanged: {fileID: -1780054122368756817}
 --- !u!114 &4122381068345444641
 MonoBehaviour:
