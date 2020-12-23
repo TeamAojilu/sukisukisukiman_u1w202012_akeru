@@ -19,6 +19,7 @@ namespace Unity1Week202012
         private Vector2Int m_startPosition = default;
 
         private Dictionary<Piece, PieceData> m_pieceData = new Dictionary<Piece, PieceData>();
+        private List<PieceData> m_spaces = new List<PieceData>();
 
         private void Start()
         {
@@ -79,6 +80,8 @@ namespace Unity1Week202012
             PieceData pieceData = GetPieceData(m_holdingPiece, positions);
             Services.PieceConnection.Add(pieceData);
             Services.Board.Place(positions);
+            ApplyBonusSpace();
+            
             m_holding.Value = false;
             m_holdingPiece = null;
         }
@@ -117,11 +120,40 @@ namespace Unity1Week202012
             {
                 Services.PieceConnection.Remove(m_pieceData[m_holdingPiece]);
             }
+
+            ApplyBonusSpace();
         }
         
         private Vector3 GetMouseWorldPosition()
         {
             return m_camera.ScreenToWorldPoint(Input.mousePosition);
+        }
+
+        private void ApplyBonusSpace()
+        {
+            foreach(var space in m_spaces)
+            {
+                Services.Board.Remove(space.m_positions);
+                Services.PieceConnection.Remove(space);
+            }
+            m_spaces.Clear();
+
+            foreach(var bonus in Services.BonusSpaceInfo.GetBonusPiece())
+            {
+                if (bonus == null) continue;
+
+                var origins = Services.BonusSpaceChecker.GetBonusSpaceOrigins(bonus.m_positions);
+                if (origins == null) continue;
+
+                foreach (var origin in origins)
+                {
+                    var space = PieceData.Create(bonus, bonus.m_positions.Select(p => p + origin).ToArray());
+                    m_spaces.Add(space);
+                    Services.PieceConnection.Add(space);
+                }
+            }
+
+            Debug.Log($"Bonus: {m_spaces.Count}");
         }
     }
 }
