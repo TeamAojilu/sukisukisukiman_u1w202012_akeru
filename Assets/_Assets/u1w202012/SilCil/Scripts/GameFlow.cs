@@ -26,6 +26,7 @@ namespace Unity1Week202012
             yield return SceneLoader.WaitLoading;
 
             m_isPlaying.Value = true;
+            Services.PieceConnection.Clear();
             yield return new WaitWhile(() => m_isPlaying);
 
             m_isRanking.Value = true;

@@ -4,6 +4,7 @@
     {
         public static IBoard Board { get; set; } = new SampleBoard();
         public static IPiecePosition PiecePosition { get; set; } = new SamplePiecePosition();
+        public static IPieceConnection PieceConnection { get; set; } = new PieceConnection();
         public static IPointerInput PointerInput { get; set; } = new SamplePointerInput();
     }
 }

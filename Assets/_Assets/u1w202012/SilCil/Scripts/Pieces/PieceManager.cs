@@ -72,9 +72,10 @@ namespace Unity1Week202012
                 positions = Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition).ToArray();
             }
 
+            Services.PieceConnection.Add(m_holdingPiece);
+            Services.Board.Place(positions);
             m_holding.Value = false;
             m_holdingPiece = null;
-            Services.Board.Place(positions);
         }
 
         private void TryHoldPiece()
@@ -90,6 +91,7 @@ namespace Unity1Week202012
             m_offset = m_holdingPiece.CashedTransform.position - mousePos;
             m_startPosition = Services.PiecePosition.GetOriginPosition(m_holdingPiece);
             Services.Board.Remove(Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition));
+            Services.PieceConnection.Remove(m_holdingPiece);
         }
         
         private Vector3 GetMouseWorldPosition()
