@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 853194679ed0c7c4da2c9e66e1e064cd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_estimatedBoardScore: {fileID: 11400000, guid: de0cc52ba1be240c7acd3a92e8f2dbc9,
+      type: 2}
+  - m_onIsPlayingChanged: {fileID: -6133858245510169575, guid: ad38d0245e53d4e7bb12beedddd95bf5,
+      type: 2}
+  - m_onIsHoldingChanged: {fileID: -5105169209996756893, guid: ae69e1867a55342f484385ee7d05afd3,
+      type: 2}
+  - m_onPieceTrashed: {fileID: -1766791704655627289, guid: fb6a6a230368b47589ad981f3b23b443,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

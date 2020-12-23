@@ -13,7 +13,7 @@ namespace Unity1Week202012
         public static IPieceObjectFactory PieceObjectFactory { get; set; }
         public static IInitialPieceGenerator InitialPieceGenerator { get; set; } = new SampleInitialPieceGenerator();
         public static List<ICombination> Combinations { get; set; } = new List<ICombination>() { new SameColorCombination() };
-        public static ICombinationEvaluator CombinationEvaluator { get; set; }
+        public static ICombinationsViewer CombinationsViewer { get; set; } = new SampleCombinationsViewer();
 
         public static void Reset()
         {
@@ -27,7 +27,7 @@ namespace Unity1Week202012
             InitialPieceGenerator = new SampleInitialPieceGenerator();
             Combinations.Clear();
             Combinations.Add(new SameColorCombination());
-            CombinationEvaluator = null;
+            CombinationsViewer = new SampleCombinationsViewer();
         }
     }
 }

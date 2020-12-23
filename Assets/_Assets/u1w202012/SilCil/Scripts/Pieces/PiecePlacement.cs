@@ -5,20 +5,21 @@ using SilCilSystem.Variables;
 
 namespace Unity1Week202012
 {
-    public class PiecePlacement : MonoBehaviour, ICombinationEvaluator
+    [RequireComponent(typeof(CombinationCalculator))]
+    public class PiecePlacement : MonoBehaviour
     {
         [SerializeField] private GameEventListener m_onSubmit = default;
         [SerializeField] private GameEventBoolListener m_onIsPlayingChanged = default;
+
+        private CombinationCalculator m_combinationCalculator = default;
 
         private Dictionary<Piece, PieceData> m_pieceData = new Dictionary<Piece, PieceData>();
         private List<PieceData> m_spaces = new List<PieceData>();
         private Dictionary<string, int> m_combinations = new Dictionary<string, int>();
 
-        public IReadOnlyDictionary<string, int> CombinationAchievements => m_combinations;
-
         private void Start()
         {
-            Services.CombinationEvaluator = this;
+            m_combinationCalculator = GetComponent<CombinationCalculator>();
             m_onSubmit?.Subscribe(CreateInitialPieces).DisposeOnDestroy(gameObject);
             m_onIsPlayingChanged?.Subscribe(x => { if (x) CreateInitialPieces(); }).DisposeOnDestroy(gameObject);
         }
@@ -109,10 +110,7 @@ namespace Unity1Week202012
                 CheckCombinations(space, ref m_combinations);
             }
 
-            foreach(var combo in m_combinations)
-            {
-                Debug.Log($"{combo.Key}: {combo.Value}");
-            }
+            m_combinationCalculator.UpdateBoardScore(m_combinations);
         }
 
         private PieceData GetPieceData(Piece piece, Vector2Int[] positions)
