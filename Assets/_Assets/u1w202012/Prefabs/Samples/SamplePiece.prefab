@@ -572,8 +572,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b7159c96c29a84c8232e6488f848b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_positions:
-  - {x: 0, y: 0}
-  - {x: 0, y: -1}
-  - {x: 1, y: -1}
-  - {x: 1, y: -1}
+  m_pieceData:
+    m_positions:
+    - {x: 0, y: 0}
+    - {x: -1, y: -1}
+    - {x: 0, y: -1}
+    - {x: 1, y: -1}
+    m_type1: red
+    m_type2: 0

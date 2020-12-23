@@ -8,7 +8,7 @@ namespace Unity1Week202012
     {
         public IEnumerable<Vector2Int> GetBlockPositions(Piece piece, Vector2Int origin)
         {
-            return piece.m_positions.Select(p => p + origin);
+            return piece.m_pieceData.m_positions.Select(p => p + origin);
         }
 
         public Vector2Int GetOriginPosition(Piece piece)
