@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Assets/u1w202012/SilCil/Scenes/Main.unity
+    path: Assets/_Assets/u1w202012/Scenes/Main.unity
     guid: 2353b9d1a7eb3fd4c976bf8d112a7fff
   - enabled: 1
     path: Assets/_Assets/u1w202012/Issues/Issue#5_ranking/naichilab/unity-simple-ranking/Scenes/Ranking.unity
