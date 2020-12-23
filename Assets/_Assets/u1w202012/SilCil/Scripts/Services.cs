@@ -10,5 +10,17 @@
         public static IBonusSpaceInfo BonusSpaceInfo { get; set; } = new SampleBonusSpaceInfo();
         public static IPieceObjectFactory PieceObjectFactory { get; set; }
         public static IInitialPieceGenerator InitialPieceGenerator { get; set; } = new SampleInitialPieceGenerator();
+
+        public static void Reset()
+        {
+            Board = new SampleBoard();
+            PiecePosition = new SamplePiecePosition();
+            PieceConnection = new PieceConnection();
+            PointerInput = new SamplePointerInput();
+            BonusSpaceChecker = new SampleBonusSpaceChecker();
+            BonusSpaceInfo = new SampleBonusSpaceInfo();
+            PieceObjectFactory = null;
+            InitialPieceGenerator = new SampleInitialPieceGenerator();
+        }
     }
 }

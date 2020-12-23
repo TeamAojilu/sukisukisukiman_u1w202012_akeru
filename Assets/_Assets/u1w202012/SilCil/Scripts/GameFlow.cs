@@ -32,6 +32,7 @@ namespace Unity1Week202012
             m_isRanking.Value = true;
             yield return new WaitWhile(() => m_isRanking);
 
+            Services.Reset();
             SceneLoader.LoadScene(m_nextScene);
         }
 
