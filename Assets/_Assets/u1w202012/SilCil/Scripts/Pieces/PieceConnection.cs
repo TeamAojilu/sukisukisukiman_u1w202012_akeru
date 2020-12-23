@@ -41,7 +41,7 @@ namespace Unity1Week202012
         
         public IEnumerable<PieceData> GetNeighbors(PieceData piece)
         {
-            return m_neighbors[piece];
+            return (m_neighbors.ContainsKey(piece)) ? m_neighbors[piece]: null;
         }
 
         private List<PieceData> CreateNeighborList(PieceData pieceData)

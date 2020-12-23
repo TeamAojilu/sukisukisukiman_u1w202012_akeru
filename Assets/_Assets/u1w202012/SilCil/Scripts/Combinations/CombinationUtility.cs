@@ -16,7 +16,11 @@ namespace Unity1Week202012
                 var piece = pieces.Dequeue();
                 hasChecked.Add(piece);
                 group.Add(piece);
-                foreach (var neighbor in Services.PieceConnection.GetNeighbors(piece))
+                
+                var neighbors = Services.PieceConnection.GetNeighbors(piece);
+                if (neighbors == null) continue;
+
+                foreach (var neighbor in neighbors)
                 {
                     if (neighbor == null) continue;
                     if (hasChecked.Contains(neighbor)) continue;
