@@ -1,4 +1,5 @@
 ﻿using SilCilSystem.Variables;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -21,9 +22,14 @@ namespace Unity1Week202012
         private Dictionary<Piece, PieceData> m_pieceData = new Dictionary<Piece, PieceData>();
         private List<PieceData> m_spaces = new List<PieceData>();
 
-        private void Start()
+        private IEnumerator Start()
         {
             m_camera = Camera.main;
+            yield return new WaitUntil(() => m_isPlaying);
+
+            m_pieceData.Clear();
+            m_spaces.Clear();
+            Services.InitialPieceGenerator.CreateInitialPieces().ToArray();
         }
 
         private void Update()

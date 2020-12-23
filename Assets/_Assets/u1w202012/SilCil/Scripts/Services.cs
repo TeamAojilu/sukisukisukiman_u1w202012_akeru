@@ -8,5 +8,7 @@
         public static IPointerInput PointerInput { get; set; } = new SamplePointerInput();
         public static IBonusSpaceChecker BonusSpaceChecker { get; set; } = new SampleBonusSpaceChecker();
         public static IBonusSpaceInfo BonusSpaceInfo { get; set; } = new SampleBonusSpaceInfo();
+        public static IPieceObjectFactory PieceObjectFactory { get; set; }
+        public static IInitialPieceGenerator InitialPieceGenerator { get; set; } = new SampleInitialPieceGenerator();
     }
 }
