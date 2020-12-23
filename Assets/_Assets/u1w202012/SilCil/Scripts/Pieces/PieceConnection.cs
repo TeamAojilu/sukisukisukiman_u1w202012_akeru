@@ -6,10 +6,10 @@ namespace Unity1Week202012
 {
     public class PieceConnection : IPieceConnection
     {
-        private List<Piece> m_pieces = new List<Piece>();
-        private Dictionary<Piece, List<Piece>> m_neighbors = new Dictionary<Piece, List<Piece>>();
+        private List<PieceData> m_pieces = new List<PieceData>();
+        private Dictionary<PieceData, List<PieceData>> m_neighbors = new Dictionary<PieceData, List<PieceData>>();
 
-        public void Add(Piece piece)
+        public void Add(PieceData piece)
         {
             if (m_pieces.Contains(piece)) return;
 
@@ -21,10 +21,10 @@ namespace Unity1Week202012
             }
         }
         
-        public void Remove(Piece piece)
+        public void Remove(PieceData piece)
         {
             if (!m_pieces.Contains(piece)) return;
-
+            
             foreach(var neighbor in m_neighbors[piece])
             {
                 m_neighbors[neighbor].Remove(piece);
@@ -39,32 +39,28 @@ namespace Unity1Week202012
             m_neighbors.Clear();
         }
         
-        public IEnumerable<Piece> GetNeighbors(Piece piece)
+        public IEnumerable<PieceData> GetNeighbors(PieceData piece)
         {
             return m_neighbors[piece];
         }
 
-        private List<Piece> CreateNeighborList(Piece piece)
+        private List<PieceData> CreateNeighborList(PieceData pieceData)
         {
-            var origin = Services.PiecePosition.GetOriginPosition(piece);
-            var blocks = Services.PiecePosition.GetBlockPositions(piece, origin).ToArray();
-
-            List<Piece> neighbors = new List<Piece>();
+            List<PieceData> neighbors = new List<PieceData>();
             foreach (var p in m_pieces)
             {
-                if (p == piece) continue;
-                if (!IsContact(p, blocks)) continue;
+                if (p == pieceData) continue;
+                if (!IsContact(p, pieceData)) continue;
                 neighbors.Add(p);
             }
             return neighbors;
         }
 
-        private bool IsContact(Piece piece, in Vector2Int[] blocks)
+        private bool IsContact(PieceData piece1, PieceData piece2)
         {
-            var origin = Services.PiecePosition.GetOriginPosition(piece);
-            foreach (var pos in Services.PiecePosition.GetBlockPositions(piece, origin))
+            foreach (var pos in piece1.m_positions)
             {
-                if (blocks.Any(b => IsNeighbor(b, pos))) return true;
+                if (piece2.m_positions.Any(p => IsNeighbor(p, pos))) return true;
             }
             return false;
         }

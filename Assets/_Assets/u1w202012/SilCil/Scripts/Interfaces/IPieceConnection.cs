@@ -4,9 +4,9 @@ namespace Unity1Week202012
 {
     public interface IPieceConnection
     {
-        void Add(Piece piece);
+        void Add(PieceData piece);
         void Clear();
-        void Remove(Piece piece);
-        IEnumerable<Piece> GetNeighbors(Piece piece);
+        void Remove(PieceData piece);
+        IEnumerable<PieceData> GetNeighbors(PieceData piece);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SilCilSystem.Variables;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -16,7 +17,9 @@ namespace Unity1Week202012
         private Piece m_holdingPiece = default;
         private Vector3 m_offset = default;
         private Vector2Int m_startPosition = default;
-        
+
+        private Dictionary<Piece, PieceData> m_pieceData = new Dictionary<Piece, PieceData>();
+
         private void Start()
         {
             m_camera = Camera.main;
@@ -68,14 +71,32 @@ namespace Unity1Week202012
             }
             else
             {
+                // おけない場合は掴んだ位置に戻す.
                 Services.PiecePosition.SetPiecePosition(m_holdingPiece, m_startPosition);
                 positions = Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition).ToArray();
             }
 
-            Services.PieceConnection.Add(m_holdingPiece);
+            PieceData pieceData = GetPieceData(m_holdingPiece, positions);
+            Services.PieceConnection.Add(pieceData);
             Services.Board.Place(positions);
             m_holding.Value = false;
             m_holdingPiece = null;
+        }
+
+        private PieceData GetPieceData(Piece piece, Vector2Int[] positions)
+        {
+            if (m_pieceData.ContainsKey(piece))
+            {
+                var data = m_pieceData[piece];
+                data.m_positions = positions;
+            }
+            else
+            {
+                var data = PieceData.Create(piece.m_pieceData, positions);
+                m_pieceData.Add(m_holdingPiece, data);
+            }
+
+            return m_pieceData[piece];
         }
 
         private void TryHoldPiece()
@@ -91,7 +112,11 @@ namespace Unity1Week202012
             m_offset = m_holdingPiece.CashedTransform.position - mousePos;
             m_startPosition = Services.PiecePosition.GetOriginPosition(m_holdingPiece);
             Services.Board.Remove(Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition));
-            Services.PieceConnection.Remove(m_holdingPiece);
+
+            if (m_pieceData.ContainsKey(m_holdingPiece))
+            {
+                Services.PieceConnection.Remove(m_pieceData[m_holdingPiece]);
+            }
         }
         
         private Vector3 GetMouseWorldPosition()
