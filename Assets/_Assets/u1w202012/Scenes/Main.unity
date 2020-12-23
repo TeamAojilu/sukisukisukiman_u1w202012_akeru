@@ -618,6 +618,7 @@ GameObject:
   - component: {fileID: 93984824}
   - component: {fileID: 93984823}
   - component: {fileID: 93984825}
+  - component: {fileID: 93984826}
   m_Layer: 0
   m_Name: PieceManager
   m_TagString: Untagged
@@ -674,6 +675,20 @@ MonoBehaviour:
   m_onSubmit: {fileID: 193066311287094200, guid: 3981e2dbdb31341f2b3087b05ece9abb,
     type: 2}
   m_onIsPlayingChanged: {fileID: -6133858245510169575, guid: ad38d0245e53d4e7bb12beedddd95bf5,
+    type: 2}
+--- !u!114 &93984826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93984822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853194679ed0c7c4da2c9e66e1e064cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_estimatedBoardScore: {fileID: 11400000, guid: de0cc52ba1be240c7acd3a92e8f2dbc9,
     type: 2}
 --- !u!1 &111238656
 GameObject:
