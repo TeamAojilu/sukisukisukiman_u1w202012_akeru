@@ -5,7 +5,7 @@ using SilCilSystem.Variables;
 
 namespace Unity1Week202012
 {
-    public class PiecePlacement : MonoBehaviour, IEvaluateCombination
+    public class PiecePlacement : MonoBehaviour, ICombinationEvaluator
     {
         [SerializeField] private GameEventListener m_onSubmit = default;
         [SerializeField] private GameEventBoolListener m_onIsPlayingChanged = default;
@@ -18,7 +18,7 @@ namespace Unity1Week202012
 
         private void Start()
         {
-            Services.EvaluateCombination = this;
+            Services.CombinationEvaluator = this;
             m_onSubmit?.Subscribe(CreateInitialPieces).DisposeOnDestroy(gameObject);
             m_onIsPlayingChanged?.Subscribe(x => { if (x) CreateInitialPieces(); }).DisposeOnDestroy(gameObject);
         }
@@ -28,34 +28,20 @@ namespace Unity1Week202012
             // 盤面を消去.
             foreach(var piece in m_pieceData.Keys)
             {
-                RemovePiece(piece);
+                RemovePiece(piece, applyBonusSpace: false);
                 Destroy(piece.gameObject);
             }
             m_pieceData.Clear();
             m_spaces.Clear();
-            
+            Services.PieceConnection.Clear();
+            m_combinations.Clear();
+
             // 新しく生成.
             foreach (var piece in Services.InitialPieceGenerator.CreateInitialPieces())
             {
                 PlacePiece(piece, applyBonusSpace: false);
             }
             ApplyBonusSpace();
-        }
-
-        public PieceData GetPieceData(Piece piece, Vector2Int[] positions)
-        {
-            if (m_pieceData.ContainsKey(piece))
-            {
-                var data = m_pieceData[piece];
-                data.m_positions = positions;
-            }
-            else
-            {
-                var data = PieceData.Create(piece.m_pieceData, positions);
-                m_pieceData.Add(piece, data);
-            }
-
-            return m_pieceData[piece];
         }
 
         public void PlacePiece(Piece piece, bool applyBonusSpace = true)
@@ -85,7 +71,7 @@ namespace Unity1Week202012
             if(applyBonusSpace) ApplyBonusSpace();
         }
 
-        public void ApplyBonusSpace()
+        private void ApplyBonusSpace()
         {
             foreach (var space in m_spaces)
             {
@@ -122,6 +108,26 @@ namespace Unity1Week202012
             {
                 CheckCombinations(space, ref m_combinations);
             }
+
+            foreach(var combo in m_combinations)
+            {
+                Debug.Log($"{combo.Key}: {combo.Value}");
+            }
+        }
+
+        private PieceData GetPieceData(Piece piece, Vector2Int[] positions)
+        {
+            if (m_pieceData.ContainsKey(piece))
+            {
+                var data = m_pieceData[piece];
+                data.m_positions = positions;
+            }
+            else
+            {
+                var data = PieceData.Create(piece.m_pieceData, positions);
+                m_pieceData.Add(piece, data);
+            }
+            return m_pieceData[piece];
         }
 
         private void CheckCombinations(PieceData piece, ref Dictionary<string, int> combinations)

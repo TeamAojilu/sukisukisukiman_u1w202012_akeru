@@ -21,7 +21,7 @@ namespace Unity1Week202012
             string color = pieceData.m_color;
             HashSet<PieceData> group = CombinationUtility.GetGroup(pieceData, ref m_checked, x => x.m_color == color);
 
-            if (group.Count > MinCount)
+            if (group.Count >= MinCount)
             {
                 return string.Format(KeyFormat, color, group.Count);
             }

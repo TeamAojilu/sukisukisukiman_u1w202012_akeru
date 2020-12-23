@@ -2,7 +2,7 @@
 
 namespace Unity1Week202012
 {
-    public interface IEvaluateCombination
+    public interface ICombinationEvaluator
     {
         IReadOnlyDictionary<string, int> CombinationAchievements { get; }
     }

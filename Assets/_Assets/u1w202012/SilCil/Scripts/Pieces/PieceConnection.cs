@@ -67,7 +67,7 @@ namespace Unity1Week202012
 
         private bool IsNeighbor(Vector2Int p1, Vector2Int p2)
         {
-            return Mathf.Abs(p1.x - p2.x) == 1 && Mathf.Abs(p1.y - p2.y) == 1;
+            return Mathf.Abs(p1.x - p2.x) + Mathf.Abs(p1.y - p2.y) == 1;
         }
     }
 }
