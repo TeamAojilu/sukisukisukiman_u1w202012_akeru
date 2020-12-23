@@ -5,16 +5,20 @@ using SilCilSystem.Variables;
 
 namespace Unity1Week202012
 {
-    public class PiecePlacement : MonoBehaviour
+    public class PiecePlacement : MonoBehaviour, IEvaluateCombination
     {
         [SerializeField] private GameEventListener m_onSubmit = default;
         [SerializeField] private GameEventBoolListener m_onIsPlayingChanged = default;
 
         private Dictionary<Piece, PieceData> m_pieceData = new Dictionary<Piece, PieceData>();
         private List<PieceData> m_spaces = new List<PieceData>();
+        private Dictionary<string, int> m_combinations = new Dictionary<string, int>();
+
+        public IReadOnlyDictionary<string, int> CombinationAchievements => m_combinations;
 
         private void Start()
         {
+            Services.EvaluateCombination = this;
             m_onSubmit?.Subscribe(CreateInitialPieces).DisposeOnDestroy(gameObject);
             m_onIsPlayingChanged?.Subscribe(x => { if (x) CreateInitialPieces(); }).DisposeOnDestroy(gameObject);
         }
@@ -106,6 +110,28 @@ namespace Unity1Week202012
             }
 
             Debug.Log($"Bonus: {m_spaces.Count}");
+            
+            // 盤面の評価を行う.
+            m_combinations.Clear();
+            Services.Combinations.ForEach(x => x.SetupBeforeEvaluate());
+            foreach(var piece in m_pieceData.Values)
+            {
+                CheckCombinations(piece, ref m_combinations);
+            }
+            foreach(var space in m_spaces)
+            {
+                CheckCombinations(space, ref m_combinations);
+            }
+        }
+
+        private void CheckCombinations(PieceData piece, ref Dictionary<string, int> combinations)
+        {
+            foreach (var combo in Services.Combinations)
+            {
+                var result = combo.Evaluate(piece);
+                if (result == null) continue;
+                combinations[result] = (combinations.ContainsKey(result)) ? combinations[result] + 1 : 1;
+            }
         }
     }
 }
