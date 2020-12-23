@@ -43,8 +43,7 @@ namespace Unity1Week202012
             {
                 if(Services.PointerInput.Flick(out Vector2 speed))
                 {
-                    print($"Flick: {speed}");
-                    m_onPieceTrashed?.Publish();
+                    TrashPiece(speed);
                 }
                 else
                 {
@@ -96,6 +95,15 @@ namespace Unity1Week202012
             m_offset = m_holdingPiece.CashedTransform.position - mousePos;
             m_startPosition = Services.PiecePosition.GetOriginPosition(m_holdingPiece);
             m_piecePlacement.RemovePiece(m_holdingPiece);
+        }
+
+        private void TrashPiece(Vector2 speed)
+        {
+            Debug.Log($"Flick: {speed}");
+            m_piecePlacement.TrashPiece(m_holdingPiece, speed);
+            m_onPieceTrashed?.Publish();
+            m_holding.Value = false;
+            m_holdingPiece = null;
         }
         
         private Vector3 GetMouseWorldPosition()

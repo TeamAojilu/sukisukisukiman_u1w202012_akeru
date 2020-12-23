@@ -72,6 +72,15 @@ namespace Unity1Week202012
             if(applyBonusSpace) ApplyBonusSpace();
         }
 
+        public void TrashPiece(Piece piece, Vector2 speed)
+        {
+            RemovePiece(piece);
+            if (m_pieceData.ContainsKey(piece)) m_pieceData.Remove(piece);
+
+            // とりあえず削除で.
+            Destroy(piece.gameObject);
+        }
+
         private void ApplyBonusSpace()
         {
             foreach (var space in m_spaces)
