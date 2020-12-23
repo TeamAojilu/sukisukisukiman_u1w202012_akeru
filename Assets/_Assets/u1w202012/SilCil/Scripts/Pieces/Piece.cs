@@ -5,14 +5,14 @@ namespace Unity1Week202012
     [System.Serializable]
     public class PieceData
     {
-        public string m_type1 = "red";
-        public string m_type2 = "0";
+        public string m_color = "red";
+        public string m_shape = "0";
         public Vector2Int[] m_positions = default;
 
-        private PieceData(string type1, string type2, Vector2Int[] positions)
+        private PieceData(string color, string shape, Vector2Int[] positions)
         {
-            m_type1 = type1;
-            m_type2 = type2;
+            m_color = color;
+            m_shape = shape;
             m_positions = positions;
         }
 
@@ -24,7 +24,7 @@ namespace Unity1Week202012
         /// <summary>typeは同じ, positionsは違うものをnewして作成</summary>
         public static PieceData Create(PieceData piece, Vector2Int[] positions)
         {
-            return new PieceData(piece.m_type1, piece.m_type2, positions);
+            return new PieceData(piece.m_color, piece.m_shape, positions);
         }
     }
 
