@@ -617,6 +617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93984824}
   - component: {fileID: 93984823}
+  - component: {fileID: 93984825}
   m_Layer: 0
   m_Name: PieceManager
   m_TagString: Untagged
@@ -658,6 +659,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &93984825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93984822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 210a6a52a39706b428f7b4063d149f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onSubmit: {fileID: 193066311287094200, guid: 3981e2dbdb31341f2b3087b05ece9abb,
+    type: 2}
+  m_onIsPlayingChanged: {fileID: -6133858245510169575, guid: ad38d0245e53d4e7bb12beedddd95bf5,
+    type: 2}
 --- !u!1 &111238656
 GameObject:
   m_ObjectHideFlags: 0
