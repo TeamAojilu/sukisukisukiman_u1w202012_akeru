@@ -16,7 +16,7 @@ namespace Unity1Week202012
         [SerializeField] private GameEventListener m_onRetry = default;
 
         [Header("Initialize")]
-        [SerializeField] private float m_timeLimit = 30f;
+        [SerializeField] private ReadonlyPropertyFloat m_timeLimit = new ReadonlyPropertyFloat(30f);
 
         [Header("Next Scenes")]
         [SerializeField] private string m_nextScene = "Main";
