@@ -15,19 +15,19 @@ MonoBehaviour:
   m_blockInfo:
     m_colorName: red
     m_shapeName: 2
-    sprite_0000: {fileID: 21300000, guid: e7b18190fb1f2dd46818ce2dbc2bd61e, type: 3}
-    sprite_0001: {fileID: 21300000, guid: c212873dd5275044fa9a3e9a907277fa, type: 3}
-    sprite_0010: {fileID: 21300000, guid: 69ea66ed604097e43926dacb2c9e3639, type: 3}
-    sprite_0011: {fileID: 21300000, guid: a3422ba8228f4644fa5c9879a1d98932, type: 3}
-    sprite_0100: {fileID: 21300000, guid: 68d9f28dca45fe84c9d44f6d8bf3f2ed, type: 3}
-    sprite_0101: {fileID: 21300000, guid: 10b5fa7deec34744e945fb9b0fe4e4cd, type: 3}
-    sprite_0110: {fileID: 21300000, guid: a9d9427f99ec3c9478edf4b59bea7471, type: 3}
-    sprite_0111: {fileID: 21300000, guid: 53ec8c73b49968c448cb86e26e4a6f99, type: 3}
-    sprite_1000: {fileID: 21300000, guid: 878c6e4889d6e2840921465e6f7325e2, type: 3}
-    sprite_1001: {fileID: 21300000, guid: e6297531cfd89024281706f3aa3509d8, type: 3}
-    sprite_1010: {fileID: 21300000, guid: f6e674ddffad63a478c38019a1221e9a, type: 3}
-    sprite_1011: {fileID: 21300000, guid: 5c30817d13b203a4a95cf07a202790b5, type: 3}
-    sprite_1100: {fileID: 21300000, guid: cab64abd207fff7459b6b1dc78fd38d2, type: 3}
-    sprite_1101: {fileID: 21300000, guid: cab64abd207fff7459b6b1dc78fd38d2, type: 3}
-    sprite_1110: {fileID: 21300000, guid: df5b0d0b530926049a429ad524ebc17d, type: 3}
-    sprite_1111: {fileID: 21300000, guid: c75956c6e702108458145c0780466827, type: 3}
+    sprite_0000: {fileID: 21300000, guid: defde87035edaeb438200c96ba27953d, type: 3}
+    sprite_0001: {fileID: 21300000, guid: 84def6987045c2e4ea04d50abb9f558c, type: 3}
+    sprite_0010: {fileID: 21300000, guid: f8112c69c68b4e44e98f4f504a0944da, type: 3}
+    sprite_0011: {fileID: 21300000, guid: 83e5657f51acb6643a6a6b98766e69c7, type: 3}
+    sprite_0100: {fileID: 21300000, guid: 7ae25e0bc2251574b80c9d06224a160c, type: 3}
+    sprite_0101: {fileID: 21300000, guid: c6cdf42c89946bf4283119e8371d3b4e, type: 3}
+    sprite_0110: {fileID: 21300000, guid: 26f0281c6c81cf44fa81e962efd33f7d, type: 3}
+    sprite_0111: {fileID: 21300000, guid: c8bd9125aa6a2544cb9b53a422508312, type: 3}
+    sprite_1000: {fileID: 21300000, guid: 57035d7be32e4e140a101b0eb9143c57, type: 3}
+    sprite_1001: {fileID: 21300000, guid: 01de338df0128ea43a88b6cb11d75fc7, type: 3}
+    sprite_1010: {fileID: 21300000, guid: c9299774cb37e60428870fd9b9a787bb, type: 3}
+    sprite_1011: {fileID: 21300000, guid: f170476131acf2143bcf6da7cb4e06c9, type: 3}
+    sprite_1100: {fileID: 21300000, guid: 59265df00398eed4aa6293c31e290f40, type: 3}
+    sprite_1101: {fileID: 21300000, guid: ab39fea8a55cc054ba2d6d00e181539d, type: 3}
+    sprite_1110: {fileID: 21300000, guid: 829a66c65fac5a145846b3d11465884e, type: 3}
+    sprite_1111: {fileID: 21300000, guid: 5e28f36ea95119b48be14c7c69f22e31, type: 3}
