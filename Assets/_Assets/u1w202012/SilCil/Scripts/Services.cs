@@ -4,6 +4,7 @@ namespace Unity1Week202012
 {
     public static class Services
     {
+        public static IStartEffect StartEffect { get; set; }
         public static IBoard Board { get; set; } = new SampleBoard();
         public static IPiecePosition PiecePosition { get; set; } = new SamplePiecePosition();
         public static IPieceConnection PieceConnection { get; set; } = new PieceConnection();
@@ -18,6 +19,7 @@ namespace Unity1Week202012
 
         public static void Reset()
         {
+            StartEffect = null;
             Board = new SampleBoard();
             PiecePosition = new SamplePiecePosition();
             PieceConnection = new PieceConnection();

@@ -1,4 +1,5 @@
 ﻿using SilCilSystem.Variables;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -63,16 +64,21 @@ namespace Unity1Week202012
 
         private void UnHoldPiece()
         {
-            var origin = Services.PiecePosition.GetOriginPosition(m_holdingPiece);
-
-            // 複数候補で検索したほうが操作性が良くなるかもしれないが、とりあえず一つでやる.
-            var positions = Services.PiecePosition.GetBlockPositions(m_holdingPiece, origin).ToArray();
-            if (Services.Board.CanPlace(positions))
+            Vector2Int[] positions = null;
+            bool canPlace = false;
+            foreach((var origin, var p) in GetUnHoldPositions())
             {
-                Services.PiecePosition.SetPiecePosition(m_holdingPiece, origin);
-                m_onPiecePlaced?.Publish();
+                if (Services.Board.CanPlace(p))
+                {
+                    Services.PiecePosition.SetPiecePosition(m_holdingPiece, origin);
+                    m_onPiecePlaced?.Publish();
+                    positions = p;
+                    canPlace = true;
+                    break;
+                }
             }
-            else
+
+            if (!canPlace)
             {
                 // おけない場合は掴んだ位置に戻す.
                 Services.PiecePosition.SetPiecePosition(m_holdingPiece, m_startPosition);
@@ -116,6 +122,28 @@ namespace Unity1Week202012
         private Vector3 GetMouseWorldPosition()
         {
             return m_camera.ScreenToWorldPoint(Input.mousePosition);
+        }
+
+        private IEnumerable<(Vector2Int, Vector2Int[])> GetUnHoldPositions()
+        {
+            var origin = Services.PiecePosition.GetOriginPosition(m_holdingPiece);
+            foreach(var o in GetAround(origin))
+            {
+                yield return (o, Services.PiecePosition.GetBlockPositions(m_holdingPiece, o).ToArray());
+            }
+        }
+
+        private IEnumerable<Vector2Int> GetAround(Vector2Int origin)
+        {
+            yield return origin + Vector2Int.zero;
+            yield return origin + new Vector2Int(0, 1);
+            yield return origin + new Vector2Int(1, 1);
+            yield return origin + new Vector2Int(1, 0);
+            yield return origin + new Vector2Int(1, -1);
+            yield return origin + new Vector2Int(0, -1);
+            yield return origin + new Vector2Int(-1, -1);
+            yield return origin + new Vector2Int(-1, 0);
+            yield return origin + new Vector2Int(-1, 1);
         }
     }
 }
