@@ -66,7 +66,7 @@ namespace Unity1Week202012
                     var position = new Vector3(pos.x, pos.y, 0f) * m_blockSize;
                     var block = Instantiate(m_piecePrefab, position, Quaternion.identity, m_parentList[i].transform);
                     block.GetComponent<RectTransform>().localPosition = position;
-                    if (targetBlockInfo != null) GetAppropriateSprite(pos, pieceInfoList[i].m_positions, targetBlockInfo.BlockInfo);
+                    if (targetBlockInfo != null) block.sprite=GetAppropriateSprite(pos, pieceInfoList[i].m_positions, targetBlockInfo.BlockInfo);
                 }
             }
 
