@@ -13,12 +13,18 @@ namespace Unity1Week202012
         [SerializeField] private VariableBool m_isHoldingPiece = default;
         [SerializeField] private VariableInt m_score = default;
         [SerializeField] private VariableFloat m_time = default;
+        [SerializeField] private GameEventListener m_onRetry = default;
 
         [Header("Initialize")]
         [SerializeField] private float m_timeLimit = 30f;
 
         [Header("Next Scenes")]
         [SerializeField] private string m_nextScene = "Main";
+
+        private void Awake()
+        {
+            m_onRetry?.Subscribe(OnRetry).DisposeOnDestroy(gameObject);
+        }
 
         private IEnumerator Start()
         {
@@ -42,6 +48,13 @@ namespace Unity1Week202012
             m_isHoldingPiece.Value = false;
             m_score.Value = 0;
             m_time.Value = m_timeLimit;
+        }
+
+        private void OnRetry()
+        {
+            if (!m_isPlaying) return;
+            StopAllCoroutines();
+            StartCoroutine(Start());
         }
     }
 }
