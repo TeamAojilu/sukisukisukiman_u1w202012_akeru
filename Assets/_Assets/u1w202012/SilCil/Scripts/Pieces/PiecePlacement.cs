@@ -24,7 +24,7 @@ namespace Unity1Week202012
             m_onIsPlayingChanged?.Subscribe(x => { if (x) CreateInitialPieces(); }).DisposeOnDestroy(gameObject);
         }
 
-        public void CreateInitialPieces()
+        private void CreateInitialPieces()
         {
             // 盤面を消去.
             foreach(var piece in m_pieceData.Keys)

@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Unity1Week202012
 {
     [RequireComponent(typeof(PiecePlacement))]
+    [RequireComponent(typeof(PieceRespawner))]
     public class PieceManager : MonoBehaviour
     {
         [SerializeField] private ReadonlyBool m_isPlaying = default;
@@ -15,6 +16,7 @@ namespace Unity1Week202012
 
         private Camera m_camera = default;
         private PiecePlacement m_piecePlacement = default;
+        private PieceRespawner m_pieceRespawner = default;
 
         private Piece m_holdingPiece = default;
         private Vector3 m_offset = default;
@@ -24,6 +26,7 @@ namespace Unity1Week202012
         {
             m_camera = Camera.main;
             m_piecePlacement = GetComponent<PiecePlacement>();
+            m_pieceRespawner = GetComponent<PieceRespawner>();
         }
 
         private void Update()
@@ -77,6 +80,7 @@ namespace Unity1Week202012
             }
 
             m_piecePlacement.PlacePiece(m_holdingPiece, positions);
+            m_pieceRespawner.DisablePlaces = null;
             
             m_holding.Value = false;
             m_holdingPiece = null;
@@ -95,6 +99,7 @@ namespace Unity1Week202012
             m_offset = m_holdingPiece.CashedTransform.position - mousePos;
             m_startPosition = Services.PiecePosition.GetOriginPosition(m_holdingPiece);
             m_piecePlacement.RemovePiece(m_holdingPiece);
+            m_pieceRespawner.DisablePlaces = Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition).ToArray();
         }
 
         private void TrashPiece(Vector2 speed)
@@ -102,6 +107,8 @@ namespace Unity1Week202012
             Debug.Log($"Flick: {speed}");
             m_piecePlacement.TrashPiece(m_holdingPiece, speed);
             m_onPieceTrashed?.Publish();
+            m_pieceRespawner.PopScheduled(piece => m_piecePlacement.PlacePiece(piece));
+            m_pieceRespawner.DisablePlaces = null;
             m_holding.Value = false;
             m_holdingPiece = null;
         }
