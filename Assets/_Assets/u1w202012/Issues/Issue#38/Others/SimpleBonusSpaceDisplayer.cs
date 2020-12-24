@@ -14,6 +14,7 @@ namespace Unity1Week202012
         [SerializeField]private Image m_piecePrefab;
         [SerializeField]private float m_blockSize = 1f;
 
+        [Header("イベントオブジェクト")]
         [SerializeField]private GameEventListener m_displayTimeingEvent;
         [SerializeField]private GameEventBoolListener m_gameStartEvent;
 
@@ -24,7 +25,7 @@ namespace Unity1Week202012
             m_gameStartEvent.Subscribe((start) => { if (start) Display(); }).DisposeOnDestroy(gameObject);
         }
 
-        [ContextMenu("display")]
+        //画面表示
         void Display()
         {
             var info = Services.BonusSpaceInfo.GetBonusPiece().ToArray();
