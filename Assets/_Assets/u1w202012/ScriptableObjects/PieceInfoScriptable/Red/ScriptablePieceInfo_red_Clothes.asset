@@ -21,12 +21,12 @@ MonoBehaviour:
     sprite_0011: {fileID: 21300000, guid: a49dcb6630347b04da244a1ec36382ab, type: 3}
     sprite_0100: {fileID: 21300000, guid: 1190271aea79e4747a7509545defd47e, type: 3}
     sprite_0101: {fileID: 21300000, guid: 06a4426285dd6754f885847b47ccff6c, type: 3}
-    sprite_0110: {fileID: 21300000, guid: 1953c726ae11f644e9ef8d9a927210c7, type: 3}
-    sprite_0111: {fileID: 21300000, guid: ee9a9600d4af01947bfe74dedba30839, type: 3}
-    sprite_1000: {fileID: 21300000, guid: 3fb16beeefddd7741bb9cd71655129a0, type: 3}
-    sprite_1001: {fileID: 21300000, guid: 2768792c060ef5e48a3342fe464db2ff, type: 3}
-    sprite_1010: {fileID: 21300000, guid: 4317853178144fd46bebdafe177fffca, type: 3}
-    sprite_1011: {fileID: 21300000, guid: 0e9772b421acb8b40bdf0df98b80efcb, type: 3}
+    sprite_0110: {fileID: 21300000, guid: eaf71a44474afdb4ca90c472299d94ed, type: 3}
+    sprite_0111: {fileID: 21300000, guid: 1953c726ae11f644e9ef8d9a927210c7, type: 3}
+    sprite_1000: {fileID: 21300000, guid: ee9a9600d4af01947bfe74dedba30839, type: 3}
+    sprite_1001: {fileID: 21300000, guid: 3fb16beeefddd7741bb9cd71655129a0, type: 3}
+    sprite_1010: {fileID: 21300000, guid: 2768792c060ef5e48a3342fe464db2ff, type: 3}
+    sprite_1011: {fileID: 21300000, guid: 4317853178144fd46bebdafe177fffca, type: 3}
     sprite_1100: {fileID: 21300000, guid: 5b7776fd6605d6c47b7f88ae20433545, type: 3}
     sprite_1101: {fileID: 21300000, guid: b1b486cff2ba8274ab69e4be0805ab2a, type: 3}
     sprite_1110: {fileID: 21300000, guid: fbcb14b0f82a63244ace0b04bc444931, type: 3}

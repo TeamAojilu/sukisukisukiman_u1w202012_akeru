@@ -175,7 +175,7 @@ PrefabInstance:
     - target: {fileID: 7760537127843705133, guid: 11dbaed5a5110484fa3c8dad04f78dcf,
         type: 3}
       propertyPath: m_Name
-      value: Issue#34_SettingsCanvas
+      value: Issue#34_SettingsCanvas Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7760537128166803611, guid: 11dbaed5a5110484fa3c8dad04f78dcf,
         type: 3}
@@ -255,6 +255,11 @@ PrefabInstance:
     - target: {fileID: 7760537128369223082, guid: 11dbaed5a5110484fa3c8dad04f78dcf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760537128369223083, guid: 11dbaed5a5110484fa3c8dad04f78dcf,
+        type: 3}
+      propertyPath: m_isBusy.m_value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7760537128519075093, guid: 11dbaed5a5110484fa3c8dad04f78dcf,
