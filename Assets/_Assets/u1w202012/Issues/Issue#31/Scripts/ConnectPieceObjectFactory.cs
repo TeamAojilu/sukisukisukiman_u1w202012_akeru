@@ -39,7 +39,6 @@ namespace Unity1Week202012
 
         [SerializeField] private Piece m_parentPrefab = default;
         [SerializeField] private SpriteRenderer m_blockPrefab = default;
-        //[SerializeField] private BlockInfo[] m_blockInfoList = default;
         [SerializeField] private List<ScriptablePieceBlockInfo> m_blockInfoHolderList = default;
         [SerializeField] private float m_blockSize = 1f;
 
@@ -80,6 +79,8 @@ namespace Unity1Week202012
         {
             var checkPosList = m_directionList.Select(x => x + checkPos).ToArray();
             int decideNumber = 0;
+            //２進数
+            //隣にブロックがあるならその桁は1
             for(int i = 0; i < 4; i++)
             {
                 if (!posDataList.Contains(checkPosList[i])) decideNumber += 1 << i;

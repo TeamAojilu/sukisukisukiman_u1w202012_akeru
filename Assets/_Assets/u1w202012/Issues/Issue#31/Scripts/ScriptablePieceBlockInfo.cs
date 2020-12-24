@@ -11,6 +11,6 @@ namespace Unity1Week202012
     public class ScriptablePieceBlockInfo : ScriptableObject, IHavePieceBlockInfo
     {
         public ConnectPieceObjectFactory.BlockInfo BlockInfo => m_blockInfo;
-        [SerializeField] ConnectPieceObjectFactory.BlockInfo m_blockInfo;
+        [SerializeField]private ConnectPieceObjectFactory.BlockInfo m_blockInfo;
     }
 }
