@@ -31,6 +31,8 @@ namespace Unity1Week202012
             InitializeVariables();
             yield return SceneLoader.WaitLoading;
 
+            yield return Services.StartEffect?.EffectCoroutine();
+
             m_isPlaying.Value = true;
             yield return new WaitWhile(() => m_isPlaying);
 

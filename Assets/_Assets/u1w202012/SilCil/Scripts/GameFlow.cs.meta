@@ -9,6 +9,8 @@ MonoImporter:
   - m_isHoldingPiece: {fileID: 11400000, guid: ae69e1867a55342f484385ee7d05afd3, type: 2}
   - m_score: {fileID: 11400000, guid: 36702277a769a433cab29962a8764605, type: 2}
   - m_time: {fileID: 11400000, guid: b9bef989ea6f84f25bda28e5446bfd52, type: 2}
+  - m_onRetry: {fileID: -916865099840891246, guid: 1290cd1c892c1c24695b2f9b296d9dd4,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
