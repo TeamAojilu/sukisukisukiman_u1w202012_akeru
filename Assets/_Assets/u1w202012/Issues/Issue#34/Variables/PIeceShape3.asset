@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25fae5bab828994a9301f64b9247c3b, type: 3}
+  m_Name: PIeceShape3
+  m_EditorClassIdentifier: 
+  m_value: 1
+  m_onValueChanged: {fileID: 8949051521634160549}
+--- !u!114 &603937329379066906
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382aedbb827af6f4199bc7a40d9d524b, type: 3}
+  m_Name: PIeceShape3Readonly
+  m_EditorClassIdentifier: 
+  m_variable: {fileID: 11400000}
+--- !u!114 &6953656458635737441
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb78647944348a4289c6818870c8ba1, type: 3}
+  m_Name: OnPIeceShape3ChangedListener
+  m_EditorClassIdentifier: 
+  m_event: {fileID: 8949051521634160549}
+--- !u!114 &8949051521634160549
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92872acfccee99d44b84f7a04883ef2b, type: 3}
+  m_Name: OnPIeceShape3Changed
+  m_EditorClassIdentifier: 
