@@ -1,10 +1,11 @@
 ﻿using SilCilSystem.Variables;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Unity1Week202012
 {
+    [RequireComponent(typeof(PiecePlacement))]
+    [RequireComponent(typeof(PieceRespawner))]
     public class PieceManager : MonoBehaviour
     {
         [SerializeField] private ReadonlyBool m_isPlaying = default;
@@ -14,16 +15,18 @@ namespace Unity1Week202012
         [SerializeField] private LayerMask m_pieceLayer = default;
 
         private Camera m_camera = default;
+        private PiecePlacement m_piecePlacement = default;
+        private PieceRespawner m_pieceRespawner = default;
+
         private Piece m_holdingPiece = default;
         private Vector3 m_offset = default;
         private Vector2Int m_startPosition = default;
 
-        private Dictionary<Piece, PieceData> m_pieceData = new Dictionary<Piece, PieceData>();
-        private List<PieceData> m_spaces = new List<PieceData>();
-
         private void Start()
         {
             m_camera = Camera.main;
+            m_piecePlacement = GetComponent<PiecePlacement>();
+            m_pieceRespawner = GetComponent<PieceRespawner>();
         }
 
         private void Update()
@@ -43,8 +46,7 @@ namespace Unity1Week202012
             {
                 if(Services.PointerInput.Flick(out Vector2 speed))
                 {
-                    print($"Flick: {speed}");
-                    m_onPieceTrashed?.Publish();
+                    TrashPiece(speed);
                 }
                 else
                 {
@@ -77,29 +79,11 @@ namespace Unity1Week202012
                 positions = Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition).ToArray();
             }
 
-            PieceData pieceData = GetPieceData(m_holdingPiece, positions);
-            Services.PieceConnection.Add(pieceData);
-            Services.Board.Place(positions);
-            ApplyBonusSpace();
+            m_piecePlacement.PlacePiece(m_holdingPiece, positions);
+            m_pieceRespawner.DisablePlaces = null;
             
             m_holding.Value = false;
             m_holdingPiece = null;
-        }
-
-        private PieceData GetPieceData(Piece piece, Vector2Int[] positions)
-        {
-            if (m_pieceData.ContainsKey(piece))
-            {
-                var data = m_pieceData[piece];
-                data.m_positions = positions;
-            }
-            else
-            {
-                var data = PieceData.Create(piece.m_pieceData, positions);
-                m_pieceData.Add(m_holdingPiece, data);
-            }
-
-            return m_pieceData[piece];
         }
 
         private void TryHoldPiece()
@@ -114,46 +98,24 @@ namespace Unity1Week202012
             m_holdingPiece = piece;
             m_offset = m_holdingPiece.CashedTransform.position - mousePos;
             m_startPosition = Services.PiecePosition.GetOriginPosition(m_holdingPiece);
-            Services.Board.Remove(Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition));
+            m_piecePlacement.RemovePiece(m_holdingPiece);
+            m_pieceRespawner.DisablePlaces = Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition).ToArray();
+        }
 
-            if (m_pieceData.ContainsKey(m_holdingPiece))
-            {
-                Services.PieceConnection.Remove(m_pieceData[m_holdingPiece]);
-            }
-
-            ApplyBonusSpace();
+        private void TrashPiece(Vector2 speed)
+        {
+            Debug.Log($"Flick: {speed}");
+            m_piecePlacement.TrashPiece(m_holdingPiece, speed);
+            m_onPieceTrashed?.Publish();
+            m_pieceRespawner.PopScheduled(piece => m_piecePlacement.PlacePiece(piece));
+            m_pieceRespawner.DisablePlaces = null;
+            m_holding.Value = false;
+            m_holdingPiece = null;
         }
         
         private Vector3 GetMouseWorldPosition()
         {
             return m_camera.ScreenToWorldPoint(Input.mousePosition);
-        }
-
-        private void ApplyBonusSpace()
-        {
-            foreach(var space in m_spaces)
-            {
-                Services.Board.Remove(space.m_positions);
-                Services.PieceConnection.Remove(space);
-            }
-            m_spaces.Clear();
-
-            foreach(var bonus in Services.BonusSpaceInfo.GetBonusPiece())
-            {
-                if (bonus == null) continue;
-
-                var origins = Services.BonusSpaceChecker.GetBonusSpaceOrigins(bonus.m_positions);
-                if (origins == null) continue;
-
-                foreach (var origin in origins)
-                {
-                    var space = PieceData.Create(bonus, bonus.m_positions.Select(p => p + origin).ToArray());
-                    m_spaces.Add(space);
-                    Services.PieceConnection.Add(space);
-                }
-            }
-
-            Debug.Log($"Bonus: {m_spaces.Count}");
         }
     }
 }
