@@ -5676,6 +5676,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3250139216964461281, guid: cfa24b0b5f7b23d4896710047626fcae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 56.39453
+      objectReference: {fileID: 0}
+    - target: {fileID: 3250139216964461281, guid: cfa24b0b5f7b23d4896710047626fcae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -49.399902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6737838080356549485, guid: cfa24b0b5f7b23d4896710047626fcae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6737838080356549485, guid: cfa24b0b5f7b23d4896710047626fcae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -145.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6737838081046153945, guid: cfa24b0b5f7b23d4896710047626fcae,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -7649,10 +7669,10 @@ MonoBehaviour:
     m_sprite: {fileID: 21300000, guid: 423106b2c0b304cc084e5d27881b1b43, type: 3}
   m_blockSize: 1
   m_frameSpriteList:
-  - {fileID: 21300000, guid: 931ba571cca66e7428fc9029aa0c5b63, type: 3}
-  - {fileID: 21300000, guid: 5b02bbfdb65a6364385ba38c9ab854ec, type: 3}
-  - {fileID: 21300000, guid: eb86d43de36f7a54287753dab74cf288, type: 3}
-  - {fileID: 21300000, guid: dee8378e9dc75dd40b12804d4010f2d3, type: 3}
+  - {fileID: 21300000, guid: 64346c52e40e84d5c9c61a18d7ff1a6c, type: 3}
+  - {fileID: 21300000, guid: aa24a0c5a149241859ec1cc2e45307e9, type: 3}
+  - {fileID: 21300000, guid: 86d35a51db0cb49a2bafa5c2d2af7e68, type: 3}
+  - {fileID: 21300000, guid: 74efd53f666f94118b74b749f74bc220, type: 3}
 --- !u!1 &1028032546334555440
 GameObject:
   m_ObjectHideFlags: 0
