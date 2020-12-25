@@ -6,15 +6,16 @@ using SilCilSystem.Variables;
 namespace Unity1Week202012
 {
     [RequireComponent(typeof(CombinationCalculator))]
-    public class PiecePlacement : MonoBehaviour
+    [RequireComponent(typeof(BonusCalculator))]
+    public class PiecePlacementWithBonus : MonoBehaviour, IPiecePlacement
     {
         [SerializeField] private GameEventListener m_onSubmit = default;
         [SerializeField] private GameEventBoolListener m_onIsPlayingChanged = default;
 
         private CombinationCalculator m_combinationCalculator = default;
+        private BonusCalculator m_bonusCalculator = default;
 
         private Dictionary<Piece, PieceData> m_pieceData = new Dictionary<Piece, PieceData>();
-        private List<PieceData> m_spaces = new List<PieceData>();
         private Dictionary<string, int> m_combinations = new Dictionary<string, int>();
 
         private void Start()
@@ -27,7 +28,7 @@ namespace Unity1Week202012
         private void CreateInitialPieces()
         {
             // 盤面を消去.
-            foreach(var piece in m_pieceData.Keys)
+            foreach (var piece in m_pieceData.Keys)
             {
                 if (piece == null) continue;
                 if (piece.gameObject == null) continue;
@@ -37,7 +38,6 @@ namespace Unity1Week202012
             Services.Board.Clear();
             Services.PieceConnection.Clear();
             m_pieceData.Clear();
-            m_spaces.Clear();
             m_combinations.Clear();
 
             // 新しく生成.
@@ -72,7 +72,7 @@ namespace Unity1Week202012
                 Services.PieceConnection.Remove(m_pieceData[piece]);
             }
 
-            if(applyBonusSpace) ApplyBonusSpace();
+            if (applyBonusSpace) ApplyBonusSpace();
         }
 
         public void TrashPiece(Piece piece, Vector2 speed)
@@ -86,42 +86,14 @@ namespace Unity1Week202012
 
         private void ApplyBonusSpace()
         {
-            foreach (var space in m_spaces)
-            {
-                Services.Board.Remove(space.m_positions);
-                Services.PieceConnection.Remove(space);
-            }
-            m_spaces.Clear();
-
-            foreach (var bonus in Services.BonusSpaceInfo.GetBonusPiece())
-            {
-                if (bonus == null) continue;
-
-                var origins = Services.BonusSpaceChecker.GetBonusSpaceOrigins(bonus.m_positions);
-                if (origins == null) continue;
-
-                foreach (var origin in origins)
-                {
-                    var space = PieceData.Create(bonus, bonus.m_positions.Select(p => p + origin).ToArray());
-                    m_spaces.Add(space);
-                    Services.PieceConnection.Add(space);
-                }
-            }
-
-            Debug.Log($"Bonus: {m_spaces.Count}");
-            
             // 盤面の評価を行う.
             m_combinations.Clear();
             Services.Combinations.ForEach(x => x.SetupBeforeEvaluate());
-            foreach(var piece in m_pieceData.Values)
+            foreach (var piece in m_pieceData.Values)
             {
                 CheckCombinations(piece, ref m_combinations);
             }
-            foreach(var space in m_spaces)
-            {
-                CheckCombinations(space, ref m_combinations);
-            }
-
+            
             m_combinationCalculator.UpdateBoardScore(m_combinations);
         }
 

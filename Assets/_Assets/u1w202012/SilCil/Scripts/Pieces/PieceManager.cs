@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Unity1Week202012
 {
-    [RequireComponent(typeof(PiecePlacement))]
     [RequireComponent(typeof(PieceRespawner))]
     public class PieceManager : MonoBehaviour
     {
@@ -17,7 +16,7 @@ namespace Unity1Week202012
         [SerializeField] private LayerMask m_pieceLayer = default;
 
         private Camera m_camera = default;
-        private PiecePlacement m_piecePlacement = default;
+        private IPiecePlacement m_piecePlacement = default;
         private PieceRespawner m_pieceRespawner = default;
 
         private Piece m_holdingPiece = default;
@@ -27,7 +26,7 @@ namespace Unity1Week202012
         private void Start()
         {
             m_camera = Camera.main;
-            m_piecePlacement = GetComponent<PiecePlacement>();
+            m_piecePlacement = GetComponent<IPiecePlacement>();
             m_pieceRespawner = GetComponent<PieceRespawner>();
             m_onSubmit?.Subscribe(OnSubmit).DisposeOnDestroy(gameObject);
         }
