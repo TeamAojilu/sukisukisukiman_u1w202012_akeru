@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8948594981877118977}
   - component: {fileID: 8948594981877118982}
+  - component: {fileID: 1868251324}
   m_Layer: 0
   m_Name: NCMBDataSaver
   m_TagString: Untagged
@@ -43,3 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2fe11392847ec8429498f9bf9871fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1868251324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948594981877118981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c868d8dff41f540bdee2d43c3fa41f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dataText: {fileID: 4900000, guid: 0a84fd52312670d4e88014c58005499b, type: 3}

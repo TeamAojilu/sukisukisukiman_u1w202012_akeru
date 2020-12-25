@@ -10,5 +10,6 @@ namespace Unity1Week202012.Aojilu
     public static class AojiluService
     {
         public static IDataSaver DataSaver { get; set; }
+        public static IAchivementDataSupplier AchivementDataSupplier { get; set; }
     }
 }
