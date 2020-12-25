@@ -12,21 +12,6 @@ namespace Unity1Week202012.Aojilu
     [Serializable]
     public class GameSaveData : IPlaySaveData
     {
-        //playerの名前
-        [SerializeField] string m_playerName;
-
-        //最大スコア
-        [SerializeField] int m_maxScore;
-        //合計スコア
-        [SerializeField] int m_totalScore;
-
-        //評価回数＝プレイ回数
-        [SerializeField] int m_playCount;
-
-        //出した最高スキマん数
-        [SerializeField] int m_maxSukimanCount;
-        //出したスキマんの合計
-        [SerializeField] int m_totalsukimanCount;
 
         [Serializable]
         public class AchivementData
@@ -40,30 +25,18 @@ namespace Unity1Week202012.Aojilu
                 this.flag = flag;
             }
         }
-        //実績開放フラグ
-        [SerializeField]public List<AchivementData> m_AchivementData = new List<AchivementData>();
 
         #region ISaveDataの実装
 
 
-        public string PlayerName { get { return m_playerName; } set { m_playerName = value; } }
-        public int MaxScore { get { return m_maxScore; } set { m_maxScore = value; } }
-        public int TotalScore { get { return m_totalScore; } set { m_totalScore = value; } }
-        public int PlayCount { get { return m_playCount; } set { m_playCount = value; } }
-        public int MaxSukimaCount { get { return m_maxSukimanCount; } set { m_maxSukimanCount = value; } }
-        public int TotalSukimaCount { get { return m_totalsukimanCount; } set { m_totalsukimanCount = value; } }
+        public string PlayerName { get; set; }
+        public int MaxScore { get; set; }
+        public int TotalScore { get; set; }
+        public int PlayCount { get; set; }
+        public int MaxSukimaCount { get; set; }
+        public int TotalSukimaCount { get; set; }
 
-        public Dictionary<string, bool> AchivementDatas
-        {
-            get
-            {
-                return m_AchivementData.ToDictionary(data => data.keyName, data => data.flag);
-            }
-            set
-            {
-                m_AchivementData = value.Select(x => new AchivementData(x.Key, x.Value)).ToList();
-            }
-        }
+        public Dictionary<string, bool> AchivementDatas { get; set; } = new Dictionary<string, bool>();
         #endregion
     }
 }

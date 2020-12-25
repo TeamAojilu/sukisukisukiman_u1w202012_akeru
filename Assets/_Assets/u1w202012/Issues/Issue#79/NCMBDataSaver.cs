@@ -5,12 +5,13 @@ using UnityEngine;
 using SilCilSystem.Variables;
 using NCMB;
 using NCMB.Extensions;//内地さんの奴に依存している
-
+using Unity1Week202012;
 namespace Unity1Week202012.Aojilu
 {
 
-    public partial class NCMBDataSaver : MonoBehaviour, INCMBDataSaver
+    public class NCMBDataSaver : MonoBehaviour, IDataSaver
     {
+
         #region constans
         private string OBJECTID_KEY = "objectId";
         private string PLAYERPREFASKEY = "pl";
@@ -31,7 +32,12 @@ namespace Unity1Week202012.Aojilu
 
         private NCMBObject m_recordObject;
         #endregion
-        #region DataIO
+
+        private void Start()
+        {
+            AojiluService.DataSaver = this;
+        }
+        #region IDataSaverの実装
 
         public IPlaySaveData PlaySaveData { get; set; } = new GameSaveData();
 

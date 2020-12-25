@@ -1,8 +1,9 @@
 ﻿using System.Collections;
+using Unity1Week202012.Aojilu;
 
-namespace Unity1Week202012.Aojilu
+namespace Unity1Week202012
 {
-    public interface INCMBDataSaver
+    public interface IDataSaver
     {
         IPlaySaveData PlaySaveData { get; }
 
