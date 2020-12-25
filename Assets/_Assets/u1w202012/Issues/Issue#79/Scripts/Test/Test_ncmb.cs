@@ -16,6 +16,7 @@ namespace Unity1Week202012.Aojilu
         [ContextMenu("save")]
         void Save()
         {
+            data.AchivementDatas = m_ncmb.PlaySaveData.AchivementDatas;
             m_ncmb.PlaySaveData = data;
             StartCoroutine( m_ncmb.Save());
         }
@@ -31,6 +32,10 @@ namespace Unity1Week202012.Aojilu
         {
             yield return m_ncmb.Load();
             data =(GameSaveData) m_ncmb.PlaySaveData;
+            foreach(var d in data.AchivementDatas)
+            {
+                Debug.Log($"key={d.Key}, value={d.Value}");
+            }
         }
     }
 }

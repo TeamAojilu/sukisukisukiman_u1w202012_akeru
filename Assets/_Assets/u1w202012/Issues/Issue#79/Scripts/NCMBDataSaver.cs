@@ -8,7 +8,6 @@ using NCMB.Extensions;//内地さんの奴に依存している
 using Unity1Week202012;
 namespace Unity1Week202012.Aojilu
 {
-
     public class NCMBDataSaver : MonoBehaviour, IDataSaver
     {
 
@@ -36,10 +35,23 @@ namespace Unity1Week202012.Aojilu
         private void Awake()
         {
             AojiluService.DataSaver = this;
+            AojiluService.AchivementDataSupplier= GetComponent<IAchivementDataSupplier>();
+        }
+
+        void Start()
+        {
+
+            InitAchivementData();
+        }
+
+        void InitAchivementData()
+        {
+            PlaySaveData = new GameSaveData();
+            PlaySaveData.AchivementDatas = AojiluService.AchivementDataSupplier.AchivementList;
         }
         #region IDataSaverの実装
 
-        public IPlaySaveData PlaySaveData { get; set; } = new GameSaveData();
+        public IPlaySaveData PlaySaveData { get; set; }
 
         public IEnumerator Save()
         {
