@@ -24,7 +24,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a25fae5bab828994a9301f64b9247c3b, type: 3}
   m_Name: PieceColor2
   m_EditorClassIdentifier: 
-  m_value: 0
+  m_value: 1
   m_onValueChanged: {fileID: -5869416891152971607}
 --- !u!114 &148355218467393063
 MonoBehaviour:

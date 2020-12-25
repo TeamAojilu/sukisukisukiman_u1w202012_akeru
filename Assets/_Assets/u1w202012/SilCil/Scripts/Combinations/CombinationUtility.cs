@@ -5,7 +5,7 @@ namespace Unity1Week202012
 {
     public static class CombinationUtility
     {
-        public static HashSet<PieceData> GetGroup(PieceData pieceData, ref HashSet<PieceData> hasChecked, Func<PieceData, bool> filter)
+        public static HashSet<PieceData> GetGroup(PieceData pieceData, Func<PieceData, bool> filter)
         {
             HashSet<PieceData> group = new HashSet<PieceData>();
 
@@ -14,7 +14,8 @@ namespace Unity1Week202012
             while (pieces.Count != 0)
             {
                 var piece = pieces.Dequeue();
-                hasChecked.Add(piece);
+                if (!filter.Invoke(piece)) continue;
+
                 group.Add(piece);
                 
                 var neighbors = Services.PieceConnection.GetNeighbors(piece);
@@ -23,8 +24,7 @@ namespace Unity1Week202012
                 foreach (var neighbor in neighbors)
                 {
                     if (neighbor == null) continue;
-                    if (hasChecked.Contains(neighbor)) continue;
-                    if (filter?.Invoke(piece) != true) continue;
+                    if (group.Contains(neighbor)) continue;
                     pieces.Enqueue(neighbor);
                 }
             }

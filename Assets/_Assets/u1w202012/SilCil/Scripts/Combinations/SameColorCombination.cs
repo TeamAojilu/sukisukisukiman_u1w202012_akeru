@@ -19,7 +19,8 @@ namespace Unity1Week202012
             if (m_checked.Contains(pieceData)) return null;
 
             string color = pieceData.m_color;
-            HashSet<PieceData> group = CombinationUtility.GetGroup(pieceData, ref m_checked, x => x.m_color == color);
+            HashSet<PieceData> group = CombinationUtility.GetGroup(pieceData, x => x.m_color == color);
+            m_checked.UnionWith(group);
 
             if (group.Count >= MinCount)
             {

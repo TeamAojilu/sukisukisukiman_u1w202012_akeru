@@ -8,5 +8,6 @@ namespace Unity1Week202012
         bool CanPlace(IEnumerable<Vector2Int> positions);
         void Place(IEnumerable<Vector2Int> positions);
         void Remove(IEnumerable<Vector2Int> positions);
+        void Clear();
     }
 }

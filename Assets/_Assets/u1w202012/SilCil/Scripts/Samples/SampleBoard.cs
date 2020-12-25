@@ -13,6 +13,11 @@ namespace Unity1Week202012
             return positions.All(pos => m_filled.Contains(pos) == false);
         }
 
+        public void Clear()
+        {
+            m_filled.Clear();
+        }
+
         public void Place(IEnumerable<Vector2Int> positions)
         {
             foreach (var pos in positions)

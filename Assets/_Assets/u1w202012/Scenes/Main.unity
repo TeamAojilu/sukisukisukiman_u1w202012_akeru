@@ -644,6 +644,8 @@ MonoBehaviour:
   m_holding: {fileID: 11400000, guid: ae69e1867a55342f484385ee7d05afd3, type: 2}
   m_onPiecePlaced: {fileID: 11400000, guid: e2d38f551756e684fa762efd712d62f8, type: 2}
   m_onPieceTrashed: {fileID: 11400000, guid: fb6a6a230368b47589ad981f3b23b443, type: 2}
+  m_onSubmit: {fileID: 193066311287094200, guid: 3981e2dbdb31341f2b3087b05ece9abb,
+    type: 2}
   m_pieceLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -5744,6 +5746,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3250139216964461281, guid: cfa24b0b5f7b23d4896710047626fcae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 56.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3250139216964461281, guid: cfa24b0b5f7b23d4896710047626fcae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -49.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6737838080356549485, guid: cfa24b0b5f7b23d4896710047626fcae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6737838080356549485, guid: cfa24b0b5f7b23d4896710047626fcae,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -145.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6737838081046153945, guid: cfa24b0b5f7b23d4896710047626fcae,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -6122,6 +6144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699508214350553266, guid: 50725bd445a39e943841d3e035640a2e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -239.5
       objectReference: {fileID: 0}
     - target: {fileID: 3699508214375616181, guid: 50725bd445a39e943841d3e035640a2e,
         type: 3}

@@ -29,12 +29,15 @@ namespace Unity1Week202012
             // 盤面を消去.
             foreach(var piece in m_pieceData.Keys)
             {
-                RemovePiece(piece, applyBonusSpace: false);
+                if (piece == null) continue;
+                if (piece.gameObject == null) continue;
                 Destroy(piece.gameObject);
             }
+
+            Services.Board.Clear();
+            Services.PieceConnection.Clear();
             m_pieceData.Clear();
             m_spaces.Clear();
-            Services.PieceConnection.Clear();
             m_combinations.Clear();
 
             // 新しく生成.
