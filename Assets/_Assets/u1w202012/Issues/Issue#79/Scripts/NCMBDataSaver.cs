@@ -33,7 +33,7 @@ namespace Unity1Week202012.Aojilu
         private NCMBObject m_recordObject;
         #endregion
 
-        private void Start()
+        private void Awake()
         {
             AojiluService.DataSaver = this;
         }

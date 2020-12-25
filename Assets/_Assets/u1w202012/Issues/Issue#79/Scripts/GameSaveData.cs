@@ -13,18 +13,6 @@ namespace Unity1Week202012.Aojilu
     public class GameSaveData : IPlaySaveData
     {
 
-        [Serializable]
-        public class AchivementData
-        {
-            public string keyName = "";
-            public bool flag = false;
-
-            public AchivementData(string keyName, bool flag)
-            {
-                this.keyName = keyName;
-                this.flag = flag;
-            }
-        }
 
         #region ISaveDataの実装
 
