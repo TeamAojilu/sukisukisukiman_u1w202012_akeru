@@ -7616,7 +7616,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_parentPrefab: {fileID: 538027865347140458, guid: de7dc1c1442ce419e8c4bddaf2832d3a,
     type: 3}
-  m_spritePrefab: {fileID: 6591213908580024930, guid: 69252d65dd69e4eecae855b389bd5a17,
+  m_blockPrefab: {fileID: 6591213908580024930, guid: 69252d65dd69e4eecae855b389bd5a17,
+    type: 3}
+  m_framePrefab: {fileID: 6591213908580024930, guid: d3421cba72de3e44395095f2f174cd56,
     type: 3}
   m_blockInfoHolderList:
   - m_colorName: blue

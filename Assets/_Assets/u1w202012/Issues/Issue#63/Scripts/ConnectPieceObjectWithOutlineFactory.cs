@@ -18,7 +18,8 @@ namespace Unity1Week202012
         }
 
         [SerializeField] private Piece m_parentPrefab = default;
-        [SerializeField] private SpriteRenderer m_spritePrefab = default;
+        [SerializeField] private SpriteRenderer m_blockPrefab = default;
+        [SerializeField] private SpriteRenderer m_framePrefab = default;
         [SerializeField] private List<BlockInfo> m_blockInfoHolderList = default;
         [SerializeField] private float m_blockSize = 1f;
 
@@ -50,14 +51,15 @@ namespace Unity1Week202012
             foreach (var pos in pieceData.m_positions)
             {
                 var position = new Vector3(pos.x, pos.y, 0f) * m_blockSize;
-                var blockSr = Instantiate(m_spritePrefab, position, Quaternion.identity, parent.transform);
+                var blockSr = Instantiate(m_blockPrefab, position, Quaternion.identity, parent.transform);
                 blockSr.sprite = targetBlockInfo.m_sprite;
 
                 var frameSprites = GetNeedFrameList(pos, pieceData.m_positions);
                 foreach(var frameSprite in frameSprites)
                 {
-                    var frameObj=Instantiate(m_spritePrefab, Vector3.zero, Quaternion.identity, blockSr.transform);
+                    var frameObj=Instantiate(m_framePrefab, Vector3.zero, Quaternion.identity, blockSr.transform);
                     frameObj.sprite = frameSprite;
+                    frameObj.transform.localPosition = Vector3.zero;
                 }
             }
 
