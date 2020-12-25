@@ -6,16 +6,17 @@ using SilCilSystem.Variables;
 using NCMB;
 using NCMB.Extensions;//内地さんの奴に依存している
 
-namespace Unity1Week202012
+namespace Unity1Week202012.Aojilu
 {
 
-    public class NCMBDataSaver : MonoBehaviour, IDataSaver<MyGameSaveData>
+    public partial class NCMBDataSaver : MonoBehaviour, INCMBDataSaver
     {
         #region constans
         private string OBJECTID_KEY = "objectId";
         private string PLAYERPREFASKEY = "pl";
         private string NCMB_CLASSNAME = "PlayerData";
         #endregion
+        #region field
         private string m_objectid = null;
         private string ObjectID
         {
@@ -28,24 +29,26 @@ namespace Unity1Week202012
             }
         }
 
-        private INCMB_PlayerDataConverter m_IplDataConverter;
-        private MyGameSaveData m_playerData = new MyGameSaveData();
         private NCMBObject m_recordObject;
+        #endregion
+        #region DataIO
 
-        private void Awake()
+        public IPlaySaveData PlaySaveData { get; set; } = new GameSaveData();
+
+        public IEnumerator Save()
         {
-            m_IplDataConverter = GetComponent<INCMB_PlayerDataConverter>();
+            yield return Save((GameSaveData)PlaySaveData);
         }
-        public IEnumerator Save(MyGameSaveData data)
+        IEnumerator Save(GameSaveData data)
         {
-            m_playerData = data;
+            PlaySaveData = data;
             if (m_recordObject == null)
             {
                 m_recordObject = new NCMBObject(NCMB_CLASSNAME);
                 m_recordObject.ObjectId = ObjectID;
             }
 
-            m_recordObject = m_IplDataConverter.ConvertPlayerData2NCMB(data, m_recordObject);
+            m_recordObject = ConvertPlayerData2NCMB(data, m_recordObject);
 
             NCMBException errorResult = null;
             yield return m_recordObject.YieldableSaveAsync(error => errorResult = error);
@@ -59,7 +62,6 @@ namespace Unity1Week202012
             //ObjectIDを保存して次に備える
             ObjectID = m_recordObject.ObjectId;
         }
-
         public IEnumerator Load()
         {
             //objectIDで検索
@@ -72,13 +74,45 @@ namespace Unity1Week202012
                 yield break;
             }
             var ncmbObject = hiScoreCheck.Result[0];
-            m_playerData = m_IplDataConverter.ConvertNCMB2PlayerData(ncmbObject);
+            PlaySaveData = ConvertNCMB2PlayerData(ncmbObject);
         }
-
-        public MyGameSaveData GetData()
+        #endregion
+        #region セーブデータとNCMBのデータのやり取り
+        #region キー
+        private string NCMB_DATA_PLAYERNAME = "name";
+        private string NCMB_DATA_MAXSCORE = "maxScore";
+        private string NCMB_DATA_TOTALSCORE = "totalScore";
+        private string NCMB_DATA_PLAYCOUNT = "playCount";
+        private string NCMB_DATA_MAXSUKIMAN = "maxSukiman";
+        private string NCMB_DATA_TOTALSUKIMAN = "totalSukiman";
+        private string NCMB_DATA_ACHIVEMENT = "achievement";
+        #endregion
+        IPlaySaveData ConvertNCMB2PlayerData(NCMBObject ncmbObject)
         {
-            return m_playerData;
+            var result = new GameSaveData();
+            result.PlayerName = ncmbObject[NCMB_DATA_PLAYERNAME].ToString();
+            result.MaxScore = int.Parse(ncmbObject[NCMB_DATA_MAXSCORE].ToString());
+            result.TotalScore = int.Parse(ncmbObject[NCMB_DATA_TOTALSCORE].ToString());
+            result.PlayCount = int.Parse(ncmbObject[NCMB_DATA_PLAYCOUNT].ToString());
+            result.MaxSukimaCount = int.Parse(ncmbObject[NCMB_DATA_MAXSUKIMAN].ToString());
+            result.TotalSukimaCount = int.Parse(ncmbObject[NCMB_DATA_TOTALSUKIMAN].ToString());
+            var json = MiniJSON.Json.Deserialize(ncmbObject[NCMB_DATA_ACHIVEMENT].ToString()) as Dictionary<string, object>;
+            result.AchivementDatas = json.ToDictionary(j => j.Key, j=>(bool) j.Value);
+            return result;
         }
+        NCMBObject ConvertPlayerData2NCMB(GameSaveData data, NCMBObject ncmbObject)
+        {
+            ncmbObject[NCMB_DATA_PLAYERNAME] = data.PlayerName;
+            ncmbObject[NCMB_DATA_MAXSCORE] = data.MaxScore;
+            ncmbObject[NCMB_DATA_TOTALSCORE] = data.TotalScore;
+            ncmbObject[NCMB_DATA_PLAYCOUNT] = data.PlayCount;
+            ncmbObject[NCMB_DATA_MAXSUKIMAN] = data.MaxSukimaCount;
+            ncmbObject[NCMB_DATA_TOTALSUKIMAN] = data.TotalSukimaCount;
+
+            ncmbObject[NCMB_DATA_ACHIVEMENT] =  MiniJSON.Json.Serialize(data.AchivementDatas);
+            return ncmbObject;
+        }
+        #endregion
 
     }
 }

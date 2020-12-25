@@ -10,24 +10,27 @@ namespace Unity1Week202012.Aojilu
     public class Test_ncmb : MonoBehaviour
     {
         [SerializeField]private NCMBDataSaver m_ncmb;
-        [SerializeField]private MyGameSaveData data=new MyGameSaveData();
+
+        [SerializeField] GameSaveData data;
 
         [ContextMenu("save")]
         void Save()
         {
-            StartCoroutine( m_ncmb.Save(data));
+            m_ncmb.PlaySaveData = data;
+            StartCoroutine( m_ncmb.Save());
         }
 
         [ContextMenu("load")]
         void Load()
         {
             StartCoroutine(LoadColutine());
+
         }
 
         IEnumerator LoadColutine()
         {
             yield return m_ncmb.Load();
-            data = m_ncmb.GetData();
+            data =(GameSaveData) m_ncmb.PlaySaveData;
         }
     }
 }

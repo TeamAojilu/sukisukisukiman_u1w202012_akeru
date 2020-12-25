@@ -7258,9 +7258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1868251324}
   - component: {fileID: 1868251323}
-  - component: {fileID: 1868251322}
   - component: {fileID: 1868251321}
-  - component: {fileID: 1868251325}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -7282,20 +7280,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ncmb: {fileID: 1868251323}
   data:
-    m_playerName: 
-    m_maxScore: 0
---- !u!114 &1868251322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868251320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2fe11392847ec8429498f9bf9871fa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+    m_playerName: a
+    m_maxScore: 20
+    m_totalScore: 12
+    m_playCount: 11
+    m_maxSukimanCount: 6
+    m_totalsukimanCount: 3
+    m_AchivementData:
+    - keyName: a
+      flag: 1
+    - keyName: b
+      flag: 1
 --- !u!114 &1868251323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7322,18 +7317,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1868251325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868251320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d81d576079cf6a4b9e81eacc8aaa8d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1870800993
 GameObject:
   m_ObjectHideFlags: 0
