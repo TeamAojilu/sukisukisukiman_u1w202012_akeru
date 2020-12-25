@@ -17,19 +17,20 @@ namespace Unity1Week202012
     public class GameDataNCMB : MonoBehaviour
     {
         string m_NCMBobject_ClassName = "PlayerData";
+        string m_NCMBobject_PlayerName = "name";
         string m_NCMBobject_JsonName = "json";
 
-        public void Save(NCMBPlayerData data)
+        public void Save(NCMBPlayerData data,string pname)
         {
             NCMBObject testClass = new NCMBObject(m_NCMBobject_ClassName);
-            testClass["json"] = JsonUtility.ToJson(data);
+            testClass[m_NCMBobject_PlayerName] = pname;
+            testClass[m_NCMBobject_JsonName] = JsonUtility.ToJson(data);
             
             testClass.SaveAsync();
         }
 
-        public IEnumerable Load()
+        public NCMBPlayerData Load()
         {
-            yield return null;
         }
     }
 }
