@@ -1,4 +1,5 @@
 ﻿using SilCilSystem.Variables;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Unity1Week202012
         [SerializeField] private VariableBool m_holding = default;
         [SerializeField] private GameEvent m_onPiecePlaced = default;
         [SerializeField] private GameEvent m_onPieceTrashed = default;
+        [SerializeField] private GameEventListener m_onSubmit = default;
         [SerializeField] private LayerMask m_pieceLayer = default;
 
         private Camera m_camera = default;
@@ -28,6 +30,7 @@ namespace Unity1Week202012
             m_camera = Camera.main;
             m_piecePlacement = GetComponent<PiecePlacement>();
             m_pieceRespawner = GetComponent<PieceRespawner>();
+            m_onSubmit?.Subscribe(OnSubmit).DisposeOnDestroy(gameObject);
         }
 
         private void Update()
@@ -65,31 +68,28 @@ namespace Unity1Week202012
         private void UnHoldPiece()
         {
             Vector2Int[] positions = null;
+
+            // 離した位置が置けるかどうかを判定.
             bool canPlace = false;
             foreach((var origin, var p) in GetUnHoldPositions())
             {
                 if (Services.Board.CanPlace(p))
                 {
                     Services.PiecePosition.SetPiecePosition(m_holdingPiece, origin);
-                    m_onPiecePlaced?.Publish();
                     positions = p;
                     canPlace = true;
                     break;
                 }
             }
 
+            // おけない場合は掴んだ位置に戻す.
             if (!canPlace)
             {
-                // おけない場合は掴んだ位置に戻す.
                 Services.PiecePosition.SetPiecePosition(m_holdingPiece, m_startPosition);
                 positions = Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition).ToArray();
             }
 
-            m_piecePlacement.PlacePiece(m_holdingPiece, positions);
-            m_pieceRespawner.DisablePlaces = null;
-            
-            m_holding.Value = false;
-            m_holdingPiece = null;
+            PlacePiece(m_holdingPiece, positions);
         }
 
         private void TryHoldPiece()
@@ -113,12 +113,32 @@ namespace Unity1Week202012
             Debug.Log($"Flick: {speed}");
             m_piecePlacement.TrashPiece(m_holdingPiece, speed);
             m_onPieceTrashed?.Publish();
-            m_pieceRespawner.PopScheduled(piece => m_piecePlacement.PlacePiece(piece));
             m_pieceRespawner.DisablePlaces = null;
+            m_pieceRespawner.PopScheduled(piece => m_piecePlacement.PlacePiece(piece));
             m_holding.Value = false;
             m_holdingPiece = null;
         }
-        
+
+        private void OnSubmit()
+        {
+            if (m_holding)
+            {
+                Services.PiecePosition.SetPiecePosition(m_holdingPiece, m_startPosition);
+                var positions = Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition).ToArray();
+                PlacePiece(m_holdingPiece, positions);
+            }
+        }
+
+        private void PlacePiece(Piece piece, Vector2Int[] positions)
+        {
+            m_piecePlacement.PlacePiece(piece, positions);
+            m_pieceRespawner.DisablePlaces = null;
+
+            m_holding.Value = false;
+            m_holdingPiece = null;
+            m_onPiecePlaced?.Publish();
+        }
+
         private Vector3 GetMouseWorldPosition()
         {
             return m_camera.ScreenToWorldPoint(Input.mousePosition);

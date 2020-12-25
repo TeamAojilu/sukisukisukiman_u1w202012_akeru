@@ -11,6 +11,7 @@ namespace Unity1Week202012
 
         private void Awake()
         {
+            m_inputField.text = m_timeLimit.Value.ToString();
             SetTimeLimit(m_inputField.text);
         }
 

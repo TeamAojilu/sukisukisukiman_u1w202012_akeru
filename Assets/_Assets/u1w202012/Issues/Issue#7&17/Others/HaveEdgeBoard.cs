@@ -56,6 +56,11 @@ namespace Unity1Week202012
                 m_filled.Remove(pos);
             }
         }
+
+        public void Clear()
+        {
+            m_filled.Clear();
+        }
         #endregion
         #region IBonusSpaceCheckerの実装
         public IEnumerable<Vector2Int> GetBonusSpaceOrigins(Vector2Int[] bonusSpaceShape)
