@@ -12,10 +12,17 @@ namespace Unity1Week202012
         [SerializeField]private BoxCollider2D m_trashArea;
         [SerializeField]private Vector2 m_centerPostion = Vector2.zero;
         [SerializeField]private float m_flickSpeed=5.0f;
+
+        private Camera m_camera = default;
+
+        public Vector3 PointerWorldPosition => m_camera.ScreenToWorldPoint(Input.mousePosition);
+
         private void Start()
         {
+            m_camera = Camera.main;
             Services.PointerInput = this;
         }
+
         public bool Flick(out Vector2 flickVelocity)
         {
             //flickVelocityは、速度は固定。方向は基準点からの方向で決定している

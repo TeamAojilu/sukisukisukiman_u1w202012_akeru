@@ -1,16 +1,12 @@
 fileFormatVersion: 2
-guid: 86f1b96e4011a394b8bb94059cb5d1a6
+guid: 3795f0a7030d35943b8f1ab4d627b9c7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - m_isPlaying: {fileID: -8260053897077216964, guid: ad38d0245e53d4e7bb12beedddd95bf5,
-      type: 2}
   - m_holding: {fileID: 11400000, guid: ae69e1867a55342f484385ee7d05afd3, type: 2}
   - m_onPiecePlaced: {fileID: 11400000, guid: e2d38f551756e684fa762efd712d62f8, type: 2}
   - m_onPieceTrashed: {fileID: 11400000, guid: fb6a6a230368b47589ad981f3b23b443, type: 2}
-  - m_onSubmit: {fileID: 193066311287094200, guid: 3981e2dbdb31341f2b3087b05ece9abb,
-      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

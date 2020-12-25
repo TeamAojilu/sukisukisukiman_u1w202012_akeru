@@ -6,8 +6,8 @@ namespace Unity1Week202012
 {
     public class RectangleBoard : MonoBehaviour, IBoard, ISpaceChecker
     {
-        [SerializeField] private Vector2Int m_rangeX = new Vector2Int(-4, 3);
-        [SerializeField] private Vector2Int m_rangeY = new Vector2Int(-4, 3);
+        [SerializeField] private Vector2Int m_rangeX = new Vector2Int(-3, 4);
+        [SerializeField] private Vector2Int m_rangeY = new Vector2Int(-3, 4);
 
         private Vector2Int m_offset = default;
         private bool[,] m_filled = default;
@@ -44,7 +44,7 @@ namespace Unity1Week202012
         private bool IsFilled(Vector2Int position)
         {
             Vector2Int index = ToIndex(position);
-            if (!IsInRange(index.x, index.y)) return false;
+            if (!IsInRange(index.x, index.y)) return true;
             return m_filled[index.x, index.y];
         }
 
@@ -82,6 +82,7 @@ namespace Unity1Week202012
                 for(int y = m_rangeY.x; y <= m_rangeY.y; y++)
                 {
                     var position = new Vector2Int(x, y);
+                    if (IsFilled(position)) continue;
                     if (hasChecked.Contains(position)) continue;
                     List<Vector2Int> group = GetGroup(position);
                     hasChecked.UnionWith(group);

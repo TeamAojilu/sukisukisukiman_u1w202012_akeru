@@ -21,6 +21,7 @@ namespace Unity1Week202012
         private void Start()
         {
             m_combinationCalculator = GetComponent<CombinationCalculator>();
+            m_bonusCalculator = GetComponent<BonusCalculator>();
             m_onSubmit?.Subscribe(CreateInitialPieces).DisposeOnDestroy(gameObject);
             m_onIsPlayingChanged?.Subscribe(x => { if (x) CreateInitialPieces(); }).DisposeOnDestroy(gameObject);
         }
@@ -95,6 +96,9 @@ namespace Unity1Week202012
             }
             
             m_combinationCalculator.UpdateBoardScore(m_combinations);
+
+            // 絶対に後で変える！！！
+            StartCoroutine(m_bonusCalculator.AddBonusScoreCoroutine());
         }
 
         private PieceData GetPieceData(Piece piece, Vector2Int[] positions)

@@ -4,6 +4,8 @@ namespace Unity1Week202012
 {
     public class SamplePointerInput : IPointerInput
     {
+        public Vector3 PointerWorldPosition => Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         /// <summary>スペースを押していたらフリックしたことにする</summary>
         public bool Flick(out Vector2 flickVelocity)
         {
