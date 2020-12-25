@@ -1689,7 +1689,7 @@ MonoBehaviour:
   m_MinValue: 2
   m_MaxValue: 20
   m_WholeNumbers: 1
-  m_Value: 14
+  m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2777,7 +2777,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 14
+  m_Text: 10
 --- !u!114 &7760537128947806568
 MonoBehaviour:
   m_ObjectHideFlags: 0

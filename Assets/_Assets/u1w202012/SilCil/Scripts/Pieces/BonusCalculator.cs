@@ -2,13 +2,15 @@
 using SilCilSystem.Variables;
 using System.Linq;
 using System.Collections;
+using SilCilSystem.Math;
 
 namespace Unity1Week202012
 {
     public class BonusCalculator : MonoBehaviour
     {
         [SerializeField] private VariableInt m_estimatedBoardScore = default;
-        [SerializeField] private ReadonlyPropertyInt m_scoreMultiply = new ReadonlyPropertyInt(100);
+        [SerializeField] private ReadonlyPropertyFloat m_scoreMultiply = new ReadonlyPropertyFloat(100f);
+        [SerializeField] private FloatToInt.CastType m_floatToInt = default;
 
         public IEnumerator AddBonusScoreCoroutine()
         {
@@ -25,7 +27,7 @@ namespace Unity1Week202012
             }
 
             yield return Services.BonusEffect?.BonusEffectCoroutine();
-            m_estimatedBoardScore.Value += min * m_scoreMultiply;
+            m_estimatedBoardScore.Value += m_floatToInt.Cast(min * m_scoreMultiply);
         }
     }
 }
