@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6591213908580024930}
   - component: {fileID: 6591213908580024928}
   m_Layer: 8
-  m_Name: ConnectPieceSprite
+  m_Name: FrameSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
