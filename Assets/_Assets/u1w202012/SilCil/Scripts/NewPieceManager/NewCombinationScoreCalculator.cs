@@ -20,7 +20,7 @@ namespace Unity1Week202012
             }
         }
         
-        public int Evaluate(IEnumerable<PieceData> pieces)
+        public double Evaluate(IEnumerable<PieceData> pieces)
         {
             Dictionary<string, int> achievements = new Dictionary<string, int>();
             foreach(var combo in Services.Combinations)

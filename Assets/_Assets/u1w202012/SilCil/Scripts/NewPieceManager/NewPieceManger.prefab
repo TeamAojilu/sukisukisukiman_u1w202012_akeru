@@ -64,8 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a703d20a7e76c449361a13b4a084d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_isPlaying: {fileID: -8260053897077216964, guid: ad38d0245e53d4e7bb12beedddd95bf5,
-    type: 2}
+  m_isPlaying: {fileID: 11400000, guid: ad38d0245e53d4e7bb12beedddd95bf5, type: 2}
   m_onIsPlayingChanged: {fileID: -6133858245510169575, guid: ad38d0245e53d4e7bb12beedddd95bf5,
     type: 2}
   m_onSubmit: {fileID: 193066311287094200, guid: 3981e2dbdb31341f2b3087b05ece9abb,
@@ -77,9 +76,7 @@ MonoBehaviour:
   m_pieceLayer:
     serializedVersion: 2
     m_Bits: 256
+  m_score: {fileID: 11400000, guid: 36702277a769a433cab29962a8764605, type: 2}
   m_estimatedScore: {fileID: 11400000, guid: de0cc52ba1be240c7acd3a92e8f2dbc9, type: 2}
-  m_bonusMultiply:
-    m_value: 30
-    m_variable: {fileID: 9084542324964129394, guid: 153a1f88ab9cc314db214fee58b9e309,
-      type: 2}
   m_floatToInt: 3
+  m_onEvalulated: {fileID: 11400000, guid: 07906ad503028fa46a9dec5478ddda08, type: 2}
