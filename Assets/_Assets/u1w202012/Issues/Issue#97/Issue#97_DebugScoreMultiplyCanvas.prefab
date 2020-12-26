@@ -1060,7 +1060,11 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
+<<<<<<< Updated upstream
   m_Value: 71
+=======
+  m_Value: 0
+>>>>>>> Stashed changes
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1216,7 +1220,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
+<<<<<<< Updated upstream
   m_Text: 'score: 71'
+=======
+  m_Text: 'score: 0'
+>>>>>>> Stashed changes
 --- !u!114 &6187071703775390465
 MonoBehaviour:
   m_ObjectHideFlags: 0
