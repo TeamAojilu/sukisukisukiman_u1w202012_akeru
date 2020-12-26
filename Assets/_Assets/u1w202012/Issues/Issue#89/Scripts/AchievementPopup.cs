@@ -22,6 +22,14 @@ namespace Unity1Week202012
             AchievementsManager.Instance.AchievementNotification = this;
         }
 
+        private void OnDestroy()
+        {
+            if(AchievementsManager.Instance.AchievementNotification == this as IAchievementNotification)
+            {
+                AchievementsManager.Instance.AchievementNotification = null;
+            }
+        }
+
         private void Update()
         {
             if (m_achievements.Count == 0) return;

@@ -26,12 +26,7 @@ namespace Unity1Week202012
         }
         private IAchievementTexts m_texts = default;
 
-        public IAchievementNotification AchievementNotification
-        {
-            get => m_notification;
-            set => m_notification = value ?? m_notification;
-        }
-        private IAchievementNotification m_notification = default;
+        public IAchievementNotification AchievementNotification { get; set; }
 
         protected override void OnAwake() { }
 
