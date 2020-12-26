@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace Unity1Week202012.Issue111
 {
@@ -38,6 +39,7 @@ namespace Unity1Week202012.Issue111
     public class SameColorAverageCalculator : IScoreCalculator
     {
         private readonly string m_color;
+        public event EventHandler<double> OnEvaluated;
 
         public SameColorAverageCalculator(string color)
         {
@@ -59,13 +61,17 @@ namespace Unity1Week202012.Issue111
                 counts.Add(group.Sum(x => x.m_positions.Length));
                 hasChecked.UnionWith(group);
             }
-            return (counts.Count == 0) ? 0 : counts.Average();
+
+            var value = (counts.Count == 0) ? 0 : counts.Average();
+            OnEvaluated?.Invoke(this, value);
+            return value;
         }
     }
 
     public class SameShapeAverageCalculator : IScoreCalculator
     {
         private readonly string m_shape;
+        public event EventHandler<double> OnEvaluated;
 
         public SameShapeAverageCalculator(string shape)
         {
@@ -87,7 +93,10 @@ namespace Unity1Week202012.Issue111
                 counts.Add(group.Sum(x => x.m_positions.Length));
                 hasChecked.UnionWith(group);
             }
-            return (counts.Count == 0) ? 0 : counts.Average();
+
+            var value = (counts.Count == 0) ? 0 : counts.Average();
+            OnEvaluated?.Invoke(this, value);
+            return value;
         }
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 using SilCilSystem.Variables;
 using System.Collections;
 using System.Linq;
+using SilCilSystem.Math;
 
 namespace Unity1Week202012.Issue111
 {
@@ -13,6 +14,10 @@ namespace Unity1Week202012.Issue111
         [SerializeField] private ReadonlyPropertyFloat m_scoreMultiply = new ReadonlyPropertyFloat(100f);
         [SerializeField] private ReadonlyPropertyFloat m_bonusMultiply = new ReadonlyPropertyFloat(50f);
 
+        [Header("Level")]
+        [SerializeField] private VariableFloat[] m_colorRanks = default;
+        [SerializeField] private VariableFloat[] m_shapeRanks = default;
+
         [Header("BonusEffect")]
         [SerializeField] private BonusCharacter m_bonusCharacterPrefab = default;
         [SerializeField] private Vector2 m_delayRange = new Vector2(0f, 0.5f);
@@ -20,11 +25,28 @@ namespace Unity1Week202012.Issue111
         [SerializeField] private float m_waitTimeBefore = 0.5f;
         [SerializeField] private float m_waitTimeAfter = 0.5f;
 
+        [SerializeField] private ScoreFrame m_scoreFrame = default;
+        [SerializeField] private FloatToInt.CastType m_floatToInt = default;
+
         private MaxSquareCalculator m_maxSquareCalculator = default;
         private List<BonusCharacter> m_bonusCharacters = new List<BonusCharacter>();
 
+        private Dictionary<string, VariableFloat> m_colors = new Dictionary<string, VariableFloat>();
+        private Dictionary<string, VariableFloat> m_shapes = new Dictionary<string, VariableFloat>();
+
         private void Start()
         {
+            m_scoreFrame.gameObject.SetActive(false);
+
+            for(int i = 0; i < Constants.ColorNames.Count; i++)
+            {
+                m_colors[Constants.ColorNames[i]] = m_colorRanks[i];
+            }
+            for (int i = 0; i < Constants.ShapeNames.Count; i++)
+            {
+                m_shapes[Constants.ShapeNames[i]] = m_shapeRanks[i];
+            }
+
             SetCalculators();
             foreach(var listen in m_onFloatChanged)
             {
@@ -38,28 +60,37 @@ namespace Unity1Week202012.Issue111
         {
             Services.ScoreCalculator = new SummentionScore(GetScoreCalculators());
             m_maxSquareCalculator = new MaxSquareCalculator();
-            Services.BonusCalculator = new BonusCalculator(m_maxSquareCalculator, (s, b) => s + b * m_bonusMultiply);
+            var bonus = new BonusCalculator(m_maxSquareCalculator, (s, b) => s + b * m_bonusMultiply);
+            bonus.OnEvaluated += (_, x) => m_scoreFrame.SetScore(m_floatToInt.Cast((float)x));
+            Services.BonusCalculator = bonus;
         }
 
         private IEnumerable<IScoreCalculator> GetScoreCalculators()
         {
             foreach (var color in Constants.ColorNames)
             {
-                yield return new ScoreMultiplier(m_scoreMultiply, new SameColorAverageCalculator(color));
+                var calculator = new SameColorAverageCalculator(color);
+                calculator.OnEvaluated += (_, x) => { m_colors[color].Value = (float)x; };
+                yield return new ScoreMultiplier(m_scoreMultiply, calculator);
             }
+
             foreach(var shape in Constants.ShapeNames)
             {
-                yield return new ScoreMultiplier(m_scoreMultiply, new SameShapeAverageCalculator(shape));
+                var calculator = new SameShapeAverageCalculator(shape);
+                calculator.OnEvaluated += (_, x) => { m_shapes[shape].Value = (float)x; };
+                yield return new ScoreMultiplier(m_scoreMultiply, calculator);
             }
         }
 
         public IEnumerator BonusEffectCoroutine()
         {
+            int dx = m_maxSquareCalculator.MaxSize.x;
+            int dy = m_maxSquareCalculator.MaxSize.y;
             int count = 0;
             int finishCount = 0;
-            for(int x = 0; x < m_maxSquareCalculator.MaxSize.x; x++)
+            for (int x = 0; x < dx; x++)
             {
-                for(int y = 0; y < m_maxSquareCalculator.MaxSize.y; y++)
+                for(int y = 0; y < dy; y++)
                 {
                     count++;
                     var delay = Random.Range(m_delayRange.x, m_delayRange.y);
@@ -76,9 +107,12 @@ namespace Unity1Week202012.Issue111
                 }
             }
 
+            m_scoreFrame.gameObject.SetActive(true);
+            m_scoreFrame.SetPosition(m_maxSquareCalculator.MaxPosition + new Vector2(dx, -dy) / 2f);
             while (count < finishCount) yield return null;
 
             yield return new WaitForSeconds(m_waitTimeBefore);
+            m_scoreFrame.gameObject.SetActive(false);
             m_bonusCharacters.ForEach(x => x.gameObject.SetActive(false));
             yield return new WaitForSeconds(m_waitTimeAfter);
         }
