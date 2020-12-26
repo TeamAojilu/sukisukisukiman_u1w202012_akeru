@@ -125,7 +125,12 @@ PrefabInstance:
     - target: {fileID: 3825638131900039256, guid: 4355e488c6917a146ba14bce88687a45,
         type: 3}
       propertyPath: m_Name
-      value: Issue#97_DebugScoreMultiplyCanvas
+      value: Issue#97_DebugScoreMultiplyCanvas Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3825638132324935919, guid: 4355e488c6917a146ba14bce88687a45,
+        type: 3}
+      propertyPath: m_isBusy.m_value
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3825638132381640571, guid: 4355e488c6917a146ba14bce88687a45,
         type: 3}
