@@ -8,8 +8,6 @@ namespace Unity1Week202012
     {
         [SerializeField] private ReadonlyBool m_isPlaying = default;
         [SerializeField] private VariableBool m_holding = default;
-        [SerializeField] private GameEvent m_onPiecePlaced = default;
-        [SerializeField] private GameEvent m_onPieceTrashed = default;
         [SerializeField] private GameEventListener m_onSubmit = default;
         
         private PieceHolder m_pieceHolder = default;
