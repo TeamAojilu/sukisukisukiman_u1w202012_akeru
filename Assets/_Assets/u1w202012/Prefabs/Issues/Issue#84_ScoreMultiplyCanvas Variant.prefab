@@ -142,5 +142,20 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5600264043879665701, guid: 5c7c9cacc32943541904c929b20501af,
+        type: 3}
+      propertyPath: m_isBusy.m_value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600264043879665702, guid: 5c7c9cacc32943541904c929b20501af,
+        type: 3}
+      propertyPath: m_Value
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600264043884383734, guid: 5c7c9cacc32943541904c929b20501af,
+        type: 3}
+      propertyPath: m_Text
+      value: 'bonus: 30'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c7c9cacc32943541904c929b20501af, type: 3}
