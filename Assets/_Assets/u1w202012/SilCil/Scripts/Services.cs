@@ -13,13 +13,16 @@ namespace Unity1Week202012
         public static IPieceObjectFactory PieceObjectFactory { get; set; }
         public static IInitialPieceGenerator InitialPieceGenerator { get; set; } = new SampleInitialPieceGenerator();
         public static IPoppedPieceGenerator PoppedPieceGenerator { get; set; } = new SamplePoppedPieceGenerator();
-
-        public static List<ICombination> Combinations { get; set; } = new List<ICombination>() { new SameColorCombination() };
-        public static ICombinationsViewer CombinationsViewer { get; set; } = new SampleCombinationsViewer();
+        
+        public static IScoreCalculator ScoreCalculator { get; set; }
+        public static IBonusCalculator BonusCalculator { get; set; }
 
         public static IStartEffect StartEffect { get; set; }
         public static IBonusEffect BonusEffect { get; set; }
 
+        // 使わない.
+        public static List<ICombination> Combinations { get; set; } = new List<ICombination>() { new SameColorCombination() };
+        public static ICombinationsViewer CombinationsViewer { get; set; } = new SampleCombinationsViewer();
         public static IBonusSpaceChecker BonusSpaceChecker { get; set; } = new SampleBonusSpaceChecker();
         public static IBonusSpaceInfo BonusSpaceInfo { get; set; } = new SampleBonusSpaceInfo();
 
@@ -35,13 +38,15 @@ namespace Unity1Week202012
             InitialPieceGenerator = new SampleInitialPieceGenerator();
             PoppedPieceGenerator = new SamplePoppedPieceGenerator();
 
-            Combinations.Clear();
-            Combinations.Add(new SameColorCombination());
-            CombinationsViewer = new SampleCombinationsViewer();
+            ScoreCalculator = null;
+            BonusCalculator = null;
 
             StartEffect = null;
             BonusEffect = null;
 
+            Combinations.Clear();
+            Combinations.Add(new SameColorCombination());
+            CombinationsViewer = new SampleCombinationsViewer();
             BonusSpaceChecker = new SampleBonusSpaceChecker();
             BonusSpaceInfo = new SampleBonusSpaceInfo();
         }

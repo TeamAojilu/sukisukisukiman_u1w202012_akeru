@@ -4,6 +4,6 @@ namespace Unity1Week202012
 {
     public interface IScoreCalculator
     {
-        int Evaluate(IEnumerable<PieceData> pieces);
+        double Evaluate(IEnumerable<PieceData> pieces);
     }
 }

@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 using System.Linq;
-using SilCilSystem.Math;
 using System.Collections.Generic;
 
 namespace Unity1Week202012
 {
     public class NewBonusScoreCalculator : IScoreCalculator
     {
-        public FloatToInt.CastType FloatToInt { get; set; } = default;
         public float ScoreMultiply { get; set; } = 30f;
 
-        public int Evaluate(IEnumerable<PieceData> pieces)
+        public double Evaluate(IEnumerable<PieceData> pieces)
         {
             if (Services.SpaceChecker == null) return 0;
 
@@ -24,7 +22,7 @@ namespace Unity1Week202012
                 positions = array;
             }
             
-            return FloatToInt.Cast(min * ScoreMultiply);
+            return min * ScoreMultiply;
         }
     }
 }

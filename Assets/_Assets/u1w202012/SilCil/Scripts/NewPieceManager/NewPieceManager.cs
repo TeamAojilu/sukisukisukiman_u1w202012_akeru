@@ -21,25 +21,18 @@ namespace Unity1Week202012
 
         [Header("Score")]
         [SerializeField] private VariableInt m_estimatedScore = default;
-        [SerializeField] private ReadonlyPropertyFloat m_bonusMultiply = new ReadonlyPropertyFloat(30f);
         [SerializeField] private FloatToInt.CastType m_floatToInt = default;
 
         private NewPieceHolder m_pieceHolder = default;
         private NewPiecePlacement m_piecePlacement = default;
         private PieceRespawner m_pieceRespawner = default;
-
-        private IScoreCalculator m_scoreCalculator = default;
-        private NewBonusScoreCalculator m_bonusScoreCalculator = default;
-
+        
         private void Start()
         {
             m_pieceRespawner = GetComponent<PieceRespawner>();
             m_piecePlacement = new NewPiecePlacement();
             m_pieceHolder = new NewPieceHolder(m_holding, m_pieceLayer.value, m_pieceRespawner, m_piecePlacement, Camera.main);
-
-            m_scoreCalculator = new NewCombinationScoreCalculator();
-            m_bonusScoreCalculator = new NewBonusScoreCalculator();
-
+            
             m_onSubmit?.Subscribe(OnSubmit).DisposeOnDestroy(gameObject);
             m_onIsPlayingChanged?.Subscribe(x => { if (x) PlayNew(); }).DisposeOnDestroy(gameObject);
         }
@@ -53,18 +46,11 @@ namespace Unity1Week202012
         
         private void UpdateEstimatedScore()
         {
-            UpdateBonusScoreOptions();
-            int score = m_scoreCalculator.Evaluate(m_piecePlacement.GetPieces());
-            score += m_bonusScoreCalculator.Evaluate(m_piecePlacement.GetPieces());
-            m_estimatedScore.Value = score;
+            double score = Services.ScoreCalculator?.Evaluate(m_piecePlacement.GetPieces()) ?? 0.0;
+            score = Services.BonusCalculator?.Evaluate(score, m_piecePlacement.GetPieces()) ?? score;
+            m_estimatedScore.Value = m_floatToInt.Cast((float) score);
         }
-
-        private void UpdateBonusScoreOptions()
-        {
-            m_bonusScoreCalculator.FloatToInt = m_floatToInt;
-            m_bonusScoreCalculator.ScoreMultiply = m_bonusMultiply;
-        }
-
+        
         private void Update()
         {
             if (!m_isPlaying) return;
