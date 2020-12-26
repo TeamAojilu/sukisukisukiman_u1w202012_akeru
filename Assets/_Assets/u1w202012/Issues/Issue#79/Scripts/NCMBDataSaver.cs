@@ -11,6 +11,8 @@ namespace Unity1Week202012.Aojilu
     public class NCMBDataSaver : MonoBehaviour, IDataSaver
     {
 
+        private static NCMBDataSaver instace;
+
         #region constans
         private string OBJECTID_KEY = "objectId";
         private string PLAYERPREFASKEY = "pl";
@@ -34,8 +36,15 @@ namespace Unity1Week202012.Aojilu
 
         private void Awake()
         {
-            AojiluService.DataSaver = this;
-            AojiluService.AchivementDataSupplier= GetComponent<IAchivementDataSupplier>();
+            if (instace == null)
+            {
+                instace = this;
+                DontDestroyOnLoad(gameObject);
+                AojiluService.DataSaver = this;
+                AojiluService.AchivementDataSupplier = GetComponent<IAchivementDataSupplier>();
+            }
+            else Destroy(gameObject);
+
         }
 
         void Start()
