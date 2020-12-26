@@ -1,24 +1,20 @@
-﻿using SilCilSystem.Variables;
-using System;
+﻿using System.Linq;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using SilCilSystem.Variables;
 
 namespace Unity1Week202012
 {
-    [RequireComponent(typeof(PiecePlacement))]
     [RequireComponent(typeof(PieceRespawner))]
-    public class PieceManager : MonoBehaviour
+    public class PieceHolder : MonoBehaviour
     {
-        [SerializeField] private ReadonlyBool m_isPlaying = default;
         [SerializeField] private VariableBool m_holding = default;
         [SerializeField] private GameEvent m_onPiecePlaced = default;
         [SerializeField] private GameEvent m_onPieceTrashed = default;
-        [SerializeField] private GameEventListener m_onSubmit = default;
         [SerializeField] private LayerMask m_pieceLayer = default;
 
         private Camera m_camera = default;
-        private PiecePlacement m_piecePlacement = default;
+        private IPiecePlacement m_piecePlacement = default;
         private PieceRespawner m_pieceRespawner = default;
 
         private Piece m_holdingPiece = default;
@@ -28,57 +24,34 @@ namespace Unity1Week202012
         private void Start()
         {
             m_camera = Camera.main;
-            m_piecePlacement = GetComponent<PiecePlacement>();
+            m_piecePlacement = GetComponent<IPiecePlacement>();
             m_pieceRespawner = GetComponent<PieceRespawner>();
-            m_onSubmit?.Subscribe(OnSubmit).DisposeOnDestroy(gameObject);
         }
 
-        private void Update()
+        public void HoldingUpdate(Vector3 mouseWorldPosition)
         {
-            if (!m_isPlaying) return;
-
-            if (m_holding)
-            {
-                HoldingUpdate();
-            }
-
-            if (m_holding == false && Services.PointerInput.PointerDown())
-            {
-                TryHoldPiece();
-            }
-            else if(m_holding == true && Services.PointerInput.PointerUp())
-            {
-                if(Services.PointerInput.Flick(out Vector2 speed))
-                {
-                    TrashPiece(speed);
-                }
-                else
-                {
-                    UnHoldPiece();
-                }
-            }
+            m_holdingPiece.CashedTransform.position = mouseWorldPosition + m_offset;
         }
 
-        private void HoldingUpdate()
+        public void UnHoldPiece(bool backStartPosition = false)
         {
-            var mousePos = GetMouseWorldPosition();
-            m_holdingPiece.CashedTransform.position = mousePos + m_offset;
-        }
+            if (m_holdingPiece == null) return;
 
-        private void UnHoldPiece()
-        {
             Vector2Int[] positions = null;
 
             // 離した位置が置けるかどうかを判定.
             bool canPlace = false;
-            foreach((var origin, var p) in GetUnHoldPositions())
+            if (!backStartPosition)
             {
-                if (Services.Board.CanPlace(p))
+                foreach ((var origin, var p) in GetUnHoldPositions())
                 {
-                    Services.PiecePosition.SetPiecePosition(m_holdingPiece, origin);
-                    positions = p;
-                    canPlace = true;
-                    break;
+                    if (Services.Board.CanPlace(p))
+                    {
+                        Services.PiecePosition.SetPiecePosition(m_holdingPiece, origin);
+                        positions = p;
+                        canPlace = true;
+                        break;
+                    }
                 }
             }
 
@@ -88,27 +61,25 @@ namespace Unity1Week202012
                 Services.PiecePosition.SetPiecePosition(m_holdingPiece, m_startPosition);
                 positions = Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition).ToArray();
             }
-
             PlacePiece(m_holdingPiece, positions);
         }
 
-        private void TryHoldPiece()
+        public void TryHoldPiece(Vector3 mouseWorldPosition)
         {
-            var mousePos = GetMouseWorldPosition();
-            var hit = Physics2D.OverlapPoint(mousePos, m_pieceLayer.value);
+            var hit = Physics2D.OverlapPoint(mouseWorldPosition, m_pieceLayer.value);
             if (hit == null) return;
             if (!hit.TryGetComponent(out Piece piece)) return;
 
             // つかむ処理.
             m_holding.Value = true;
             m_holdingPiece = piece;
-            m_offset = m_holdingPiece.CashedTransform.position - mousePos;
+            m_offset = m_holdingPiece.CashedTransform.position - mouseWorldPosition;
             m_startPosition = Services.PiecePosition.GetOriginPosition(m_holdingPiece);
             m_piecePlacement.RemovePiece(m_holdingPiece);
             m_pieceRespawner.DisablePlaces = Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition).ToArray();
         }
 
-        private void TrashPiece(Vector2 speed)
+        public void TrashPiece(Vector2 speed)
         {
             Debug.Log($"Flick: {speed}");
             m_piecePlacement.TrashPiece(m_holdingPiece, speed);
@@ -117,16 +88,6 @@ namespace Unity1Week202012
             m_pieceRespawner.PopScheduled(piece => m_piecePlacement.PlacePiece(piece));
             m_holding.Value = false;
             m_holdingPiece = null;
-        }
-
-        private void OnSubmit()
-        {
-            if (m_holding)
-            {
-                Services.PiecePosition.SetPiecePosition(m_holdingPiece, m_startPosition);
-                var positions = Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition).ToArray();
-                PlacePiece(m_holdingPiece, positions);
-            }
         }
 
         private void PlacePiece(Piece piece, Vector2Int[] positions)
@@ -139,15 +100,10 @@ namespace Unity1Week202012
             m_onPiecePlaced?.Publish();
         }
 
-        private Vector3 GetMouseWorldPosition()
-        {
-            return m_camera.ScreenToWorldPoint(Input.mousePosition);
-        }
-
         private IEnumerable<(Vector2Int, Vector2Int[])> GetUnHoldPositions()
         {
             var origin = Services.PiecePosition.GetOriginPosition(m_holdingPiece);
-            foreach(var o in GetAround(origin))
+            foreach (var o in GetAround(origin))
             {
                 yield return (o, Services.PiecePosition.GetBlockPositions(m_holdingPiece, o).ToArray());
             }

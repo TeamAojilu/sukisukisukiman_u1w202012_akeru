@@ -1686,10 +1686,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 7760537129154383469}
   m_HandleRect: {fileID: 7760537129121803348}
   m_Direction: 0
-  m_MinValue: 4
-  m_MaxValue: 10
+  m_MinValue: 2
+  m_MaxValue: 20
   m_WholeNumbers: 1
-  m_Value: 10
+  m_Value: 7
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1722,10 +1722,10 @@ MonoBehaviour:
     m_value: 0
     m_variable: {fileID: 0}
   m_minValue:
-    m_value: 4
+    m_value: 2
     m_variable: {fileID: 0}
   m_maxValue:
-    m_value: 10
+    m_value: 20
     m_variable: {fileID: 0}
   m_wholeNumbers:
     m_value: 1
@@ -1735,7 +1735,7 @@ MonoBehaviour:
     m_variable: {fileID: 6464456928489057476, guid: aeb070ca8fdb4984a9fc6dad7a6469de,
       type: 2}
   m_isBusy:
-    m_value: 0
+    m_value: 1
     m_variable: {fileID: 0}
   m_duration:
     m_value: -1
@@ -2188,7 +2188,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!114 &7760537128572223768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2777,7 +2777,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: 07
 --- !u!114 &7760537128947806568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2983,7 +2983,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!114 &7760537129059808212
 MonoBehaviour:
   m_ObjectHideFlags: 0

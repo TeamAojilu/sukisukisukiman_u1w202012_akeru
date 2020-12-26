@@ -6,7 +6,7 @@ using SilCilSystem.Variables;
 namespace Unity1Week202012
 {
     [RequireComponent(typeof(CombinationCalculator))]
-    public class PiecePlacement : MonoBehaviour
+    public class PiecePlacement : MonoBehaviour, IPiecePlacement
     {
         [SerializeField] private GameEventListener m_onSubmit = default;
         [SerializeField] private GameEventBoolListener m_onIsPlayingChanged = default;

@@ -1,0 +1,8 @@
+#id,DisplayName
+MaxCombinationCount_4,1回で作成したコンボの数が4個を超えた
+MaxCombinationCount_8,1回で作成したコンボの数が8個を超えた
+MaxCombinationCount_12,1回で作成したコンボの数が12個を超えた
+MaxCombinationCount_16,1回で作成したコンボの数が16個を超えた
+MaxCombinationCount_20,1回で作成したコンボの数が20個を超えた
+MaxCombinationCount_24,1回で作成したコンボの数が24個を超えた
+MaxCombinationCount_30,1回で作成したコンボの数が30個を超えた
