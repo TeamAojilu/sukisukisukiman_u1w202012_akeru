@@ -103,11 +103,11 @@ namespace Unity1Week202012
             m_isSubmitting = true;
             CancelMovingPiece();
             UpdateEstimatedScore();
+            m_onEvalulated?.Publish();
 
             m_score.Value = m_estimatedScore;
             yield return Services.BonusEffect?.BonusEffectCoroutine();
 
-            m_onEvalulated?.Publish();
             m_isSubmitting = false;
             m_isPlaying.Value = false;
         }
