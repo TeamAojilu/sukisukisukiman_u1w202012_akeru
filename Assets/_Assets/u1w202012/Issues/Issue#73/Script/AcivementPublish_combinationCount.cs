@@ -7,14 +7,14 @@ using SilCilSystem.Variables;
 
 namespace Unity1Week202012
 {
-    public class AchievementPublish_highScore : MonoBehaviour
+    public class AcivementPublish_combinationCount : MonoBehaviour
     {
-        [SerializeField]private GameEventString m_achievementEvent;
+        [SerializeField] private GameEventString m_achievementEvent;
         [SerializeField] private GameEventListener m_submitEvent;
-        [SerializeField] private ReadonlyInt m_score;
-        [SerializeField]private List<int> m_achieveScoreList = new List<int>();
+        [SerializeField] private ReadonlyInt m_combinationCount;
+        [SerializeField] private List<int> m_achieveComboList = new List<int>();
 
-        [SerializeField] private string m_achieveId = "HighScore_{0}";
+        [SerializeField] private string m_achieveId = "MaxCombinationCount_{0}";
 
 
         private void Start()
@@ -24,15 +24,14 @@ namespace Unity1Week202012
 
         void EvaluationAchievement()
         {
-            foreach(var score in m_achieveScoreList)
+            foreach (var score in m_achieveComboList)
             {
-                if (m_score.Value >= score)
+                if (m_combinationCount.Value >= score)
                 {
                     var id = m_achieveId.Replace("{0}", score.ToString());
                     m_achievementEvent.Publish(id);
                 }
             }
         }
-
     }
 }
