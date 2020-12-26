@@ -14,7 +14,9 @@ MonoImporter:
   - m_onPiecePlaced: {fileID: 11400000, guid: e2d38f551756e684fa762efd712d62f8, type: 2}
   - m_onPieceTrashed: {fileID: 11400000, guid: fb6a6a230368b47589ad981f3b23b443, type: 2}
   - m_onPieceMoveCancelled: {instanceID: 0}
+  - m_score: {fileID: 11400000, guid: 36702277a769a433cab29962a8764605, type: 2}
   - m_estimatedScore: {fileID: 11400000, guid: de0cc52ba1be240c7acd3a92e8f2dbc9, type: 2}
+  - m_onEvalulated: {fileID: 11400000, guid: 07906ad503028fa46a9dec5478ddda08, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

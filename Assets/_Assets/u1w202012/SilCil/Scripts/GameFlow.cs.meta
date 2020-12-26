@@ -5,11 +5,9 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - m_isPlaying: {fileID: 11400000, guid: ad38d0245e53d4e7bb12beedddd95bf5, type: 2}
-  - m_isRanking: {fileID: 11400000, guid: db6b1aabc4e214470b8abb296202929c, type: 2}
-  - m_isHoldingPiece: {fileID: 11400000, guid: ae69e1867a55342f484385ee7d05afd3, type: 2}
   - m_score: {fileID: 11400000, guid: 36702277a769a433cab29962a8764605, type: 2}
   - m_time: {fileID: 11400000, guid: b9bef989ea6f84f25bda28e5446bfd52, type: 2}
-  - m_onRetry: {fileID: -916865099840891246, guid: 1290cd1c892c1c24695b2f9b296d9dd4,
+  - m_onTitle: {fileID: -1501463508575088924, guid: ba1e088d2d497504695a3f8a3f089931,
       type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

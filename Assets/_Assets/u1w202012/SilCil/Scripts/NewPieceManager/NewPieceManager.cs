@@ -1,5 +1,6 @@
 ﻿using SilCilSystem.Math;
 using SilCilSystem.Variables;
+using System.Collections;
 using UnityEngine;
 
 namespace Unity1Week202012
@@ -8,7 +9,7 @@ namespace Unity1Week202012
     public class NewPieceManager : MonoBehaviour
     {
         [Header("Playing")]
-        [SerializeField] private ReadonlyBool m_isPlaying = default;
+        [SerializeField] private VariableBool m_isPlaying = default;
         [SerializeField] private GameEventBoolListener m_onIsPlayingChanged = default;
         [SerializeField] private GameEventListener m_onSubmit = default;
 
@@ -20,12 +21,16 @@ namespace Unity1Week202012
         [SerializeField] private LayerMask m_pieceLayer = default;
 
         [Header("Score")]
+        [SerializeField] private VariableInt m_score = default;
         [SerializeField] private VariableInt m_estimatedScore = default;
         [SerializeField] private FloatToInt.CastType m_floatToInt = default;
+        [SerializeField] private GameEvent m_onEvalulated = default;
 
         private NewPieceHolder m_pieceHolder = default;
         private NewPiecePlacement m_piecePlacement = default;
         private PieceRespawner m_pieceRespawner = default;
+
+        private bool m_isSubmitting = false;
         
         private void Start()
         {
@@ -54,6 +59,7 @@ namespace Unity1Week202012
         private void Update()
         {
             if (!m_isPlaying) return;
+            if (m_isSubmitting) return;
 
             if (m_holding)
             {
@@ -87,9 +93,23 @@ namespace Unity1Week202012
 
         private void OnSubmit()
         {
+            if (!m_isPlaying) return;
+            if (m_isSubmitting) return;
+            StartCoroutine(SubmitCoroutine());
+        }
+
+        private IEnumerator SubmitCoroutine()
+        {
+            m_isSubmitting = true;
             CancelMovingPiece();
             UpdateEstimatedScore();
-            PlayNew();
+
+            m_score.Value = m_estimatedScore;
+            yield return Services.BonusEffect?.BonusEffectCoroutine();
+
+            m_onEvalulated?.Publish();
+            m_isSubmitting = false;
+            m_isPlaying.Value = false;
         }
 
         private void CancelMovingPiece()
