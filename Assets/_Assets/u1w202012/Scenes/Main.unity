@@ -9427,10 +9427,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Issue#119_UICanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 836655373619930345, guid: 03eef0b2e9888634b847df5f1c6d3b16,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03eef0b2e9888634b847df5f1c6d3b16, type: 3}

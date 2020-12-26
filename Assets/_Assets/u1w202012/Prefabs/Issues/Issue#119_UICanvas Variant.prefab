@@ -7,6 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2453619826907968394, guid: 6d3763765030a0c4882deb5e0a4dc32a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453619826907968394, guid: 6d3763765030a0c4882deb5e0a4dc32a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802075762347475363, guid: 6d3763765030a0c4882deb5e0a4dc32a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 102.30667
+      objectReference: {fileID: 0}
     - target: {fileID: 8468840225012461649, guid: 6d3763765030a0c4882deb5e0a4dc32a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -115,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 8468840225012461661, guid: 6d3763765030a0c4882deb5e0a4dc32a,
         type: 3}
       propertyPath: m_Name
-      value: Issue#119_UICanvas Variant
+      value: Issue#119_UICanvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d3763765030a0c4882deb5e0a4dc32a, type: 3}
