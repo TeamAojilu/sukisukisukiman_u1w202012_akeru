@@ -11,7 +11,7 @@ namespace Unity1Week202012.Aojilu.Title
         [SerializeField] RectTransform m_Parent;
         //[SerializeField] Scrollbar m_scroll;
         [SerializeField] GameObject m_textPrefab;
-
+        [SerializeField] GameObject m_nonAchievedTextPrefab;
         IAchivementTextSupplier m_achive;
 
         [SerializeField] GameObject m_myCanvas;
@@ -25,12 +25,25 @@ namespace Unity1Week202012.Aojilu.Title
             InitializeContent();
             m_myCanvas.SetActive(true);
             if (m_achive == null) m_achive = AojiluService_Title.AchivementTextSupplier;
-            var dataList =m_achive.GetAchivementDataList().Where(x=>x.Value==true);
-            foreach (var data in dataList)
+            var dataTrueList =m_achive.GetAchivementDataList().Where(x=>x.Value==true);
+            foreach (var data in dataTrueList)
             {
-                GameObject obj = Instantiate(m_textPrefab,m_Parent);
-                m_textPrefab.GetComponent<ITextContent>().DisplayText(data.Key);
+                if (data.Key != "")
+                {
+                    GameObject obj = Instantiate(m_textPrefab,m_Parent);
+                    m_textPrefab.GetComponent<ITextContent>().DisplayText(data.Key);   
+                }
                 //m_scroll.
+            }
+
+            var dataFalseList = m_achive.GetAchivementDataList().Where(x => x.Value == false);
+            foreach (var data in dataFalseList)
+            {
+                if (data.Key != "")
+                {
+                    GameObject obj = Instantiate(m_nonAchievedTextPrefab, m_Parent);
+                    m_nonAchievedTextPrefab.GetComponent<ITextContent>().DisplayText(data.Key);
+                }
             }
         }
         void InitializeContent()
