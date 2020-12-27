@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace Unity1Week202012.Aojilu.Title
 {
-
     public class DisplayAchivementList : MonoBehaviour, IDisplayContent
     {
         [SerializeField] RectTransform m_Parent;
-        [SerializeField] Text m_textPrefab;
+        //[SerializeField] Scrollbar m_scroll;
+        [SerializeField] GameObject m_textPrefab;
 
         IAchivementTextSupplier m_achive;
 
@@ -28,8 +28,9 @@ namespace Unity1Week202012.Aojilu.Title
             var dataList =m_achive.GetAchivementDataList().Where(x=>x.Value==true);
             foreach (var data in dataList)
             {
-                var obj = Instantiate(m_textPrefab, m_Parent);
-                obj.text = data.Key;
+                GameObject obj = Instantiate(m_textPrefab,m_Parent);
+                m_textPrefab.GetComponent<ITextContent>().DisplayText(data.Key);
+                //m_scroll.
             }
         }
         void InitializeContent()
