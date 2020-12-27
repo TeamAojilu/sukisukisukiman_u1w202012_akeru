@@ -1,0 +1,6 @@
+#id,DisplayName
+total_score_10000,ごうけい 1まんてん
+total_score_100000,ごうけい 10まんてん
+total_score_1000000,ごうけい 100まんてん
+total_score_10000000,ごうけい 1000まんてん
+total_score_100000000,ごうけい 1おくてん

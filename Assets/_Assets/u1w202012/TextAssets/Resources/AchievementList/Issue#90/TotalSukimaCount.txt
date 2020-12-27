@@ -1,0 +1,4 @@
+#id,DisplayName
+total_sukima_100,スキマん ごうけい 100たい
+total_sukima_500,スキマん ごうけい 500たい
+total_sukima_1000,スキマん ごうけい 1000たい

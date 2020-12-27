@@ -9,6 +9,7 @@ namespace Unity1Week202012.Issue111
     {
         private readonly IScoreCalculator m_bonusCalculator;
         private readonly Func<double, double, double> m_scoreBonusFunc;
+        public event EventHandler<double> OnEvaluated;
 
         public BonusCalculator(IScoreCalculator bonusCalculator, Func<double, double, double> scoreBonusFunc)
         {
@@ -19,7 +20,9 @@ namespace Unity1Week202012.Issue111
         public double Evaluate(double scoreBeforeBonus, IEnumerable<PieceData> pieces)
         {
             var bonus = m_bonusCalculator.Evaluate(pieces);
-            return m_scoreBonusFunc.Invoke(scoreBeforeBonus, bonus);
+            double value = m_scoreBonusFunc.Invoke(scoreBeforeBonus, bonus);
+            OnEvaluated?.Invoke(this, value);
+            return value;
         }
     }
 

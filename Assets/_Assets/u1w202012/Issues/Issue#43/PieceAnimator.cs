@@ -19,6 +19,9 @@ namespace Unity1Week202012
         [SerializeField] private Vector2 m_beforeNoiseRenge;
 
         [SerializeField] AudioClip m_poppedSE;
+        [SerializeField] private VariableInt m_soundCount = default;
+        [SerializeField] private int m_soundMaxCount = 4;
+
         private IEnumerator Start()
         {
 
@@ -50,6 +53,8 @@ namespace Unity1Week202012
         void PlaySE()
         {
             if (m_poppedSE == null) return;
+            if (m_soundCount >= m_soundMaxCount) return;
+            m_soundCount.Value++;
             GetComponent<AudioSource>().PlayOneShot(m_poppedSE);
         }
     }

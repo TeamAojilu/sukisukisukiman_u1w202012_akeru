@@ -142,6 +142,8 @@ MonoBehaviour:
   m_animationSpeed: 1.5
   m_beforeNoiseRenge: {x: 0, y: 0.3}
   m_poppedSE: {fileID: 8300000, guid: 32c765c883458c94bb8794fc3104ec6e, type: 3}
+  m_soundCount: {fileID: 11400000, guid: 6f823f6bf4e57b5459736744e5561c60, type: 2}
+  m_soundMaxCount: 3
 --- !u!82 &7620271043570948332
 AudioSource:
   m_ObjectHideFlags: 0
@@ -151,7 +153,7 @@ AudioSource:
   m_GameObject: {fileID: 538027865347140459}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 9380a6c12cf6f9d4b8913df8ad626a58,
+  OutputAudioMixerGroup: {fileID: -8812413207030765960, guid: 9380a6c12cf6f9d4b8913df8ad626a58,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1

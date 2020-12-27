@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6294297ed0ea2534b81cad791b2fb4a0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_onEvaluated: {fileID: 11400000, guid: 07906ad503028fa46a9dec5478ddda08, type: 2}
+  - m_onPlayDataUpdated: {fileID: 11400000, guid: c08af5b4aa318f34681a410ad88cd864,
+      type: 2}
+  - m_score: {fileID: 11400000, guid: 36702277a769a433cab29962a8764605, type: 2}
+  - m_sukimaCount: {fileID: 11400000, guid: f04fd5d0d611596468c53c84b0e4ddc9, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

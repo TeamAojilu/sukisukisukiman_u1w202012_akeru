@@ -1,0 +1,5 @@
+#id,DisplayName
+red_all,すべて あかいろ
+blue_all,すべて あおいろ
+green_all,すべて みどりいろ
+yellow_all,すべて きいろ

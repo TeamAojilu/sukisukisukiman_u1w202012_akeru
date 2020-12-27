@@ -5,11 +5,14 @@ using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Singletons;
 using Unity1Week202012.Aojilu;
+using UnityEngine.SceneManagement;
 
 namespace Unity1Week202012
 {
     public class AchievementsManager : SingletonMonoBehaviour<AchievementsManager>
     {
+        private const string DefaultName = "No Name";
+
         [SerializeField] private GameEventStringListener m_onAchieved = default;
 
         [Header("Debug")]
@@ -17,7 +20,7 @@ namespace Unity1Week202012
 
         private IDisposable m_disposable = default;
         private Queue<AchievementData> m_achivements = new Queue<AchievementData>();
-        private bool m_isServerBusy = default;
+        private bool m_isServerBusy = false;
 
         public IAchievementTexts AchievementTexts
         {
@@ -29,9 +32,9 @@ namespace Unity1Week202012
         public IAchievementNotification AchievementNotification { get; set; }
 
         protected override void OnAwake() { }
-
         protected override void OnDestroyCallback()
         {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             m_disposable?.Dispose();
         }
 
@@ -48,6 +51,8 @@ namespace Unity1Week202012
             AchievementTexts = AchievementTexts ?? new AchievementTexts();
             AchievementNotification = AchievementNotification ?? new SampleAchievementNotification();
             m_disposable = m_onAchieved?.Subscribe(OnAchieved);
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         private void Update()
@@ -62,16 +67,35 @@ namespace Unity1Week202012
                 AchievementNotification?.Show(achive);
             }
 
-            if (m_saveData)
-            {
-                StartCoroutine(SaveCoroutine());
-            }
+            StartCoroutine(SaveCoroutine());
         }
 
-        private IEnumerator SaveCoroutine() => BusyCoroutine(AojiluService.DataSaver.Save());
-        private IEnumerator LoadCoroutine() => BusyCoroutine(AojiluService.DataSaver.Load());
-        private IEnumerator BusyCoroutine(IEnumerator coroutine)
+        private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
+            StartCoroutine(SaveCoroutine());
+        }
+
+        private void OnApplicationFocus(bool focus)
+        {
+            if (focus) return;
+            StartCoroutine(SaveCoroutine());
+        }
+
+        private IEnumerator SaveCoroutine(bool wait = true)
+        {
+            if (m_saveData)
+            {
+                AojiluService.DataSaver.PlaySaveData.PlayerName = AojiluService.DataSaver.PlaySaveData.PlayerName ?? DefaultName;
+                yield return BusyCoroutine(AojiluService.DataSaver.Save(), wait: wait);
+            }
+            yield break;
+        }
+
+        private IEnumerator LoadCoroutine(bool wait = true) => BusyCoroutine(AojiluService.DataSaver.Load(), wait: wait);
+        private IEnumerator BusyCoroutine(IEnumerator coroutine, bool wait = true)
+        {
+            if (wait) yield return new WaitWhile(() => m_isServerBusy);
+
             m_isServerBusy = true;
             yield return coroutine;
             m_isServerBusy = false;

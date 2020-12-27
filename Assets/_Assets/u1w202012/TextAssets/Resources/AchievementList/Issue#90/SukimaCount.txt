@@ -1,0 +1,6 @@
+#id,DisplayName
+high_sukima_8,スキマん 8たい
+high_sukima_16,スキマん 16たい
+high_sukima_24,スキマん 24たい
+high_sukima_32,スキマん 32たい
+high_sukima_40,スキマん 40たい
