@@ -20,10 +20,17 @@ namespace Unity1Week202012.Aojilu.Title
             var result = new Dictionary<string, bool>();
 
             AchievementTexts achievementTexts = new AchievementTexts();
-            foreach (var data in dataDictionary)
+            foreach (var data in achievementTexts.GetAchievemenents())
             {
-                if (!achievementTexts.TryGetAchievementData(data.Key, out var achieveData)) continue;
-                result.Add(achieveData.m_displayName, dataDictionary[achieveData.m_id]);
+                
+                if (dataDictionary.ContainsKey(data.m_id))
+                {
+                    result.Add(data.m_displayName, dataDictionary[data.m_id]); 
+                }
+                else
+                {
+                    result.Add(data.m_displayName, false); 
+                }
             }
 
             return result;
