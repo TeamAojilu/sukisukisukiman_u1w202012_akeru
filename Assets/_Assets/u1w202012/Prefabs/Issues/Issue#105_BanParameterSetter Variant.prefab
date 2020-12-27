@@ -7,26 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2220304033683788815, guid: 5ce86ad4291e2684493bce8ac0d9a610,
-        type: 3}
-      propertyPath: m_ranks.Array.data[0].m_achivements
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 2220304033683788815, guid: 5ce86ad4291e2684493bce8ac0d9a610,
-        type: 3}
-      propertyPath: m_ranks.Array.data[1].m_achivements
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 2220304033683788815, guid: 5ce86ad4291e2684493bce8ac0d9a610,
-        type: 3}
-      propertyPath: m_ranks.Array.data[2].m_achivements
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2220304033683788815, guid: 5ce86ad4291e2684493bce8ac0d9a610,
-        type: 3}
-      propertyPath: m_ranks.Array.data[3].m_achivements
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 7508760411836450148, guid: 5ce86ad4291e2684493bce8ac0d9a610,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -85,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 7508760411836450150, guid: 5ce86ad4291e2684493bce8ac0d9a610,
         type: 3}
       propertyPath: m_Name
-      value: Issue#105_BanParameterSetter
+      value: Issue#105_BanParameterSetter Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce86ad4291e2684493bce8ac0d9a610, type: 3}
