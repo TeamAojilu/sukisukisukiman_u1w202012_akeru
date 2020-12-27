@@ -20,17 +20,28 @@ namespace Unity1Week202012.Aojilu.Title
         [SerializeField] private string m_masterPath = "Master";
         [SerializeField] private string m_bgmPath = "BGM";
         [SerializeField] private string m_sePath = "SE";
+        private static bool isSoundFirst = true;
+        private static List<float> _volumes = new List<float>();
+        
         private void Awake()
         {
             AojiluService_Title.SettingDisplay = this;
 
-            foreach(var slider in m_sliderList)
+            if (isSoundFirst)
             {
-                slider.minValue = 0;
-                slider.maxValue = 1;
-                slider.value = 0.5f;
-                SetSetting();
+                // static 変数の初期化
+                _volumes.Add(0.5f);
+                _volumes.Add(0.5f);
+                _volumes.Add(0.5f);
+                isSoundFirst = false;
             }
+            for (int i = 0; i< 3; i++)
+            {
+                m_sliderList[i].minValue = 0;
+                m_sliderList[i].maxValue = 1;
+                m_sliderList[i].value = _volumes[i];
+            }
+            SetSetting();
         }
         public void Display()
         {
@@ -61,6 +72,14 @@ namespace Unity1Week202012.Aojilu.Title
             m_mixier.SetFloat(m_masterPath,ConvertVolume2dB( m_sliderList[0].value));
             m_mixier.SetFloat(m_bgmPath,ConvertVolume2dB( m_sliderList[1].value));
             m_mixier.SetFloat(m_sePath,ConvertVolume2dB( m_sliderList[2].value));
+        }
+
+        public void OnDisable()
+        {
+            for (int i = 0; i< 3; i++)
+            { 
+                _volumes[i] = m_sliderList[i].value;
+            }
         }
     }
 }
