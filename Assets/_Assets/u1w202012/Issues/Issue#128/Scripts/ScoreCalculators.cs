@@ -40,6 +40,7 @@ namespace Unity1Week202012.Issue128
     {
         private readonly string m_color;
         public event EventHandler<double> OnEvaluated;
+        public event EventHandler<IEnumerable<int>> OnGroupChecked;
 
         public SameColorAverageCalculator(string color)
         {
@@ -62,6 +63,8 @@ namespace Unity1Week202012.Issue128
                 hasChecked.UnionWith(group);
             }
 
+            OnGroupChecked?.Invoke(this, counts);
+
             var value = (counts.Count == 0) ? 0 : counts.Average();
             OnEvaluated?.Invoke(this, value);
             return value;
@@ -72,6 +75,7 @@ namespace Unity1Week202012.Issue128
     {
         private readonly string m_shape;
         public event EventHandler<double> OnEvaluated;
+        public event EventHandler<IEnumerable<int>> OnGroupChecked;
 
         public SameShapeAverageCalculator(string shape)
         {
@@ -94,6 +98,7 @@ namespace Unity1Week202012.Issue128
                 hasChecked.UnionWith(group);
             }
 
+            OnGroupChecked?.Invoke(this, counts);
             var value = (counts.Count == 0) ? 0 : counts.Average();
             OnEvaluated?.Invoke(this, value);
             return value;

@@ -641,6 +641,8 @@ GameObject:
   - component: {fileID: 4637761539132727525}
   - component: {fileID: 4637761539132727524}
   - component: {fileID: 5100788375504603361}
+  - component: {fileID: -695561379382818228}
+  - component: {fileID: 8183265060403262100}
   m_Layer: 5
   m_Name: Issue#128_ScoreCalculatorSetter
   m_TagString: Untagged
@@ -773,6 +775,38 @@ MonoBehaviour:
   m_waitTimeAfter: 1
   m_scoreFrame: {fileID: 8689610262922166801}
   m_floatToInt: 0
+--- !u!114 &-695561379382818228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4637761539132727530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f601a7e8913a44f8b69dc22716c2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onAchieved: {fileID: 11400000, guid: dae8f3e1e156d6b43856e23c6caf7f2e, type: 2}
+  m_onEvaluated: {fileID: 915520494308748148, guid: 07906ad503028fa46a9dec5478ddda08,
+    type: 2}
+  m_achievements: 0a0000000f00000014000000
+--- !u!114 &8183265060403262100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4637761539132727530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cb6e542611a1f4b9a36bd76b0230ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onAchieved: {fileID: 11400000, guid: dae8f3e1e156d6b43856e23c6caf7f2e, type: 2}
+  m_onEvaluated: {fileID: 915520494308748148, guid: 07906ad503028fa46a9dec5478ddda08,
+    type: 2}
+  m_achievements: 0a0000000f00000014000000
 --- !u!1 &7340501934432202331
 GameObject:
   m_ObjectHideFlags: 0

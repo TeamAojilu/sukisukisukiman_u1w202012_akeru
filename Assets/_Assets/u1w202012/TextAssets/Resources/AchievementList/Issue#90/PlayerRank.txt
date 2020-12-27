@@ -1,5 +1,5 @@
 #id,DisplayName
-player_rank_C,ランクC！
-player_rank_B,ランクB！
-player_rank_A,ランクA！
-player_rank_S,ランクS！
+player_rank_C,ランク C
+player_rank_B,ランク B
+player_rank_A,ランク A
+player_rank_S,ランク S

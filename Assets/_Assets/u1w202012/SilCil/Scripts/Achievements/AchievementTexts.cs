@@ -8,7 +8,7 @@ namespace Unity1Week202012
     {
         private const string Path = "AchievementList";
         private const string Comment = "#";
-        private static readonly char[] m_separators = new char[] { ',', ' ', '\t' };
+        private static readonly char[] m_separators = new char[] { ',', };
 
         private Dictionary<string, AchievementData> m_achievements = new Dictionary<string, AchievementData>();
 

@@ -7,6 +7,16 @@ using SilCilSystem.Math;
 
 namespace Unity1Week202012.Issue128
 {
+    public interface IColorGroupCountReciever
+    {
+        void Apply(string color, IEnumerable<int> counts);
+    }
+
+    public interface IShapeGroupCountReciever
+    {
+        void Apply(string shape, IEnumerable<int> counts);
+    }
+
     public class ScoreCalculatorsSetter : MonoBehaviour, IBonusEffect
     {
         [Header("Score")]
@@ -35,8 +45,14 @@ namespace Unity1Week202012.Issue128
         private Dictionary<string, VariableFloat> m_colors = new Dictionary<string, VariableFloat>();
         private Dictionary<string, VariableFloat> m_shapes = new Dictionary<string, VariableFloat>();
 
+        private IColorGroupCountReciever m_colorCountReciever = default;
+        private IShapeGroupCountReciever m_shapeCountReciever = default;
+
         private void Start()
         {
+            m_colorCountReciever = GetComponent<IColorGroupCountReciever>();
+            m_shapeCountReciever = GetComponent<IShapeGroupCountReciever>();
+
             m_scoreFrame.gameObject.SetActive(false);
 
             for(int i = 0; i < Constants.ColorNames.Count; i++)
@@ -78,6 +94,7 @@ namespace Unity1Week202012.Issue128
                 count++;
                 var calculator = new SameColorAverageCalculator(color);
                 calculator.OnEvaluated += (_, x) => { m_colors[color].Value = (float)x; };
+                calculator.OnGroupChecked += (_, x) => m_colorCountReciever?.Apply(color, x);
                 yield return new ScoreMultiplier(m_scoreMultiply * count, calculator);
             }
 
@@ -87,6 +104,7 @@ namespace Unity1Week202012.Issue128
                 count++;
                 var calculator = new SameShapeAverageCalculator(shape);
                 calculator.OnEvaluated += (_, x) => { m_shapes[shape].Value = (float)x; };
+                calculator.OnGroupChecked += (_, x) => m_shapeCountReciever?.Apply(shape, x);
                 yield return new ScoreMultiplier(m_scoreMultiply * count, calculator);
             }
         }

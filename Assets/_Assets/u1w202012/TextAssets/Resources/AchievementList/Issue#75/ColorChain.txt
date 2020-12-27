@@ -1,0 +1,13 @@
+#id,DisplayName
+red_chain_10,あかいろ 10こ
+red_chain_15,あかいろ 15こ
+red_chain_20,あかいろ 20こ
+blue_chain_10,あおいろ 10こ
+blue_chain_15,あおいろ 15こ
+blue_chain_20,あおいろ 20こ
+green_chain_10,みどりいろ 10こ
+green_chain_15,みどりいろ 15こ
+green_chain_20,みどりいろ 20こ
+yellow_chain_10,きいろ 10こ
+yellow_chain_15,きいろ 15こ
+yellow_chain_20,きいろ 20こ
