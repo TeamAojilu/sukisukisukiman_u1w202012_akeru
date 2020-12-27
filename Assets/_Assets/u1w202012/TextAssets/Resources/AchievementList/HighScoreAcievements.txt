@@ -1,7 +1,7 @@
 #id,DisplayName
-HighScore_500,最高得点が500点を超えた
-HighScore_1000,最高得点が1000点を超えた
-HighScore_1500,最高得点が1500点を超えた
-HighScore_2000,最高得点が2000点を超えた
-HighScore_2500,最高得点が2500点を超えた
+HighScore_500,最高得点が500点をこえた
+HighScore_1000,最高得点が1000点をこえた
+HighScore_1500,最高得点が1500点をこえた
+HighScore_2000,最高得点が2000点をこえた
+HighScore_2500,最高得点が2500点をこえた
 
