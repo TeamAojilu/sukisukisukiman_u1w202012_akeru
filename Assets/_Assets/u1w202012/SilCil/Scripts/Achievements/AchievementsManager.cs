@@ -60,11 +60,31 @@ namespace Unity1Week202012
             if (m_isServerBusy) return;
             if (m_achivements.Count == 0) return;
 
+            List<AchievementData> shows = new List<AchievementData>();
             while(m_achivements.Count != 0)
             {
                 var achive = m_achivements.Dequeue();
                 AojiluService.DataSaver.PlaySaveData.AchivementDatas[achive.m_id] = true;
-                AchievementNotification?.Show(achive);
+
+                string[] words = achive.m_id.Split(new char[] { '_' });
+                AchievementData remove = null;
+                foreach(var show in shows)
+                {
+                    var seps = show.m_id.Split(new char[] { '_' });
+                    if (words.Length < 2 || seps.Length < 2) continue;
+                    
+                    // 頭2つが同じなら同じ系統とみなして削除.
+                    if (words[0] != seps[0] && words[1] != seps[1]) continue;
+                    remove = show;
+                    break;
+                }
+                if (remove != null) shows.Remove(remove);
+                shows.Add(achive);
+            }
+
+            foreach(var show in shows)
+            {
+                AchievementNotification?.Show(show);
             }
 
             StartCoroutine(SaveCoroutine());
