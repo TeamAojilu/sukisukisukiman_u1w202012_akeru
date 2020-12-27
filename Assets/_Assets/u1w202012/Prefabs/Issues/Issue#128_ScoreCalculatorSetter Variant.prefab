@@ -145,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 4637761539132727530, guid: 63ba51f948b0fe94f858b6537531c6db,
         type: 3}
       propertyPath: m_Name
-      value: Issue#128_ScoreCalculatorSetter
+      value: Issue#128_ScoreCalculatorSetter Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63ba51f948b0fe94f858b6537531c6db, type: 3}

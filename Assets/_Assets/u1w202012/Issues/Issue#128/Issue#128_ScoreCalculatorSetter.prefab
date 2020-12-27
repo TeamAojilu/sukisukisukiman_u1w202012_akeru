@@ -640,7 +640,6 @@ GameObject:
   - component: {fileID: 4637761539132727526}
   - component: {fileID: 4637761539132727525}
   - component: {fileID: 4637761539132727524}
-  - component: {fileID: 4637761539132727531}
   - component: {fileID: 5100788375504603361}
   m_Layer: 5
   m_Name: Issue#128_ScoreCalculatorSetter
@@ -730,51 +729,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4637761539132727531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4637761539132727530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dda336a52c61ef24298e671fb19ba98e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_onFloatChanged:
-  - {fileID: -1467986514688357918, guid: de66dbef9d70f2e45ba879b64b2402a3, type: 2}
-  - {fileID: -2701935780570086160, guid: b8d9737c49fd76d47b6dd1ac9ee761a8, type: 2}
-  m_scoreMultiply:
-    m_value: 100
-    m_variable: {fileID: -8913374580154208579, guid: de66dbef9d70f2e45ba879b64b2402a3,
-      type: 2}
-  m_bonusMultiply:
-    m_value: 50
-    m_variable: {fileID: 5243368703696456966, guid: b8d9737c49fd76d47b6dd1ac9ee761a8,
-      type: 2}
-  m_colorRanks:
-  - {fileID: 11400000, guid: 2dd0331a0afb94242ab50161587a9435, type: 2}
-  - {fileID: 11400000, guid: 3b1cf84185f7f554b897767661cfa29f, type: 2}
-  - {fileID: 11400000, guid: 0db5439b1a06d794e847a8592092fdd2, type: 2}
-  - {fileID: 11400000, guid: 23b01bb9a894cff45bef38fd6b781d9a, type: 2}
-  m_shapeRanks:
-  - {fileID: 11400000, guid: bdea4595006393e4c90f57dd9bd4d0e0, type: 2}
-  - {fileID: 11400000, guid: 9b195b8970d770e418ab436f126d6430, type: 2}
-  - {fileID: 11400000, guid: 9441561f025c0cf49899efc6c7e3a105, type: 2}
-  - {fileID: 11400000, guid: b680367994f6688418bb37a409de295b, type: 2}
-  m_bonusCharacterPrefab: {fileID: 7945422713466789419, guid: 5207353e7845ad743813786768a7ad8a,
-    type: 3}
-  m_delayRange: {x: 0, y: 0.3}
-  m_audioSources:
-  - {fileID: 8592813474946489524}
-  - {fileID: 2094909059679857255}
-  - {fileID: 2727178164092435853}
-  - {fileID: 7044379646457480610}
-  m_waitTimeBefore: 1
-  m_waitTimeAfter: 1
-  m_scoreFrame: {fileID: 0}
-  m_floatToInt: 3
 --- !u!114 &5100788375504603361
 MonoBehaviour:
   m_ObjectHideFlags: 0
