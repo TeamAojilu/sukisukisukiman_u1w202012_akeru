@@ -14,7 +14,7 @@ namespace Unity1Week202012
         public Vector2Int GetOriginPosition(Piece piece)
         {
             var pos = piece.CashedTransform.position;
-            return new Vector2Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y)); // これは操作性に関わる項目なので要調整.
+            return new Vector2Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y));
         }
 
         public void SetPiecePosition(Piece piece, Vector2Int pos)

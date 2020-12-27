@@ -11,6 +11,8 @@ namespace Unity1Week202012
 {
     public class AchievementsManager : SingletonMonoBehaviour<AchievementsManager>
     {
+        private const string DefaultName = "No Name";
+
         [SerializeField] private GameEventStringListener m_onAchieved = default;
 
         [Header("Debug")]
@@ -83,6 +85,7 @@ namespace Unity1Week202012
         {
             if (m_saveData)
             {
+                AojiluService.DataSaver.PlaySaveData.PlayerName = AojiluService.DataSaver.PlaySaveData.PlayerName ?? DefaultName;
                 yield return BusyCoroutine(AojiluService.DataSaver.Save(), wait: wait);
             }
             yield break;
