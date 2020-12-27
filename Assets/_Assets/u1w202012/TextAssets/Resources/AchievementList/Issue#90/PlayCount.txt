@@ -1,0 +1,7 @@
+#id,DisplayName
+total_play_1,はじめてゲームをプレイ
+total_play_10,できあがり 10回
+total_play_50,できあがり 50回
+total_play_100,できあがり 100回
+total_play_500,できあがり 500回
+total_play_1000,できあがり 1000回
