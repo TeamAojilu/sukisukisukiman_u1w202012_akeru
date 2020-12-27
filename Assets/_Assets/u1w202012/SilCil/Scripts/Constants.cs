@@ -10,6 +10,7 @@ namespace Unity1Week202012
         public static IReadOnlyList<string> ShapeNames => m_shapes;
 
         // 累計の保存は大雑把でいいかなぁと思ったので、100分の1で足し算する.
-        public const float TotalScoreRate = 0.01f;
+        // 0.01だときりのいい数値になってしまうので、中途半端にする.
+        public const float TotalScoreRate = 0.017f;
     }
 }
