@@ -1,8 +1,8 @@
 #id,DisplayName
 high_sukima_10,スキマん 10たい
-high_sukima_15,スキマん 15たい
+#high_sukima_15,スキマん 15たい
 high_sukima_20,スキマん 20たい
-high_sukima_25,スキマん 25たい
+#high_sukima_25,スキマん 25たい
 high_sukima_30,スキマん 30たい
 high_sukima_35,スキマん 35たい
 high_sukima_40,スキマん 40たい

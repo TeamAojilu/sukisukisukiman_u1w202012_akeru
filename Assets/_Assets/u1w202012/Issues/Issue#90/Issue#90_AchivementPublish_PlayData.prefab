@@ -66,7 +66,7 @@ MonoBehaviour:
   m_onAchieved: {fileID: 11400000, guid: dae8f3e1e156d6b43856e23c6caf7f2e, type: 2}
   m_onPlayDataUpdated: {fileID: -2844515426072420376, guid: c08af5b4aa318f34681a410ad88cd864,
     type: 2}
-  m_achievements: 0a0000000f00000014000000190000001e0000002300000028000000
+  m_achievements: 0a000000140000001e0000002300000028000000
 --- !u!114 &459394372425831865
 MonoBehaviour:
   m_ObjectHideFlags: 0

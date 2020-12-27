@@ -91,7 +91,14 @@ namespace Unity1Week202012
             yield break;
         }
 
-        private IEnumerator LoadCoroutine(bool wait = true) => BusyCoroutine(AojiluService.DataSaver.Load(), wait: wait);
+        private IEnumerator LoadCoroutine(bool wait = true)
+        {
+            if (m_saveData)
+            {
+                yield return BusyCoroutine(AojiluService.DataSaver.Load(), wait: wait);
+            }
+            yield break;
+        }
         private IEnumerator BusyCoroutine(IEnumerator coroutine, bool wait = true)
         {
             if (wait) yield return new WaitWhile(() => m_isServerBusy);
