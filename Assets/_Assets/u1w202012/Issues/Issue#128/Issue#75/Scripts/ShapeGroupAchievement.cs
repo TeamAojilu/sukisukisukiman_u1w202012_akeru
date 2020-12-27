@@ -31,6 +31,13 @@ namespace Unity1Week202012.Issue128
                     }
                 }
             }
+
+            // 単一種判定.
+            if (maxGroups.Count(x => x.Value != 0) == 1)
+            {
+                var only = maxGroups.First(x => x.Value != 0);
+                m_onAchieved?.Publish($"{only.Key}_all");
+            }
         }
 
         public void Apply(string shape, IEnumerable<int> counts)

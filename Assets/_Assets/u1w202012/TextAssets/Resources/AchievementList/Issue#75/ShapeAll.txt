@@ -1,0 +1,5 @@
+#id,DisplayName
+0_all,すべて ほん
+1_all,すべて せんたくもの
+2_all,すべて かでん
+3_all,すべて かぐ
