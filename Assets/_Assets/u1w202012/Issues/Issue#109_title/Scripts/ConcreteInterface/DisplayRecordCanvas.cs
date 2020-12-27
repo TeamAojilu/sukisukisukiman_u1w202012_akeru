@@ -37,7 +37,7 @@ namespace Unity1Week202012.Aojilu.Title
             var RankText = Services.UserRankCalculator.GetRank();
 
             m_rankText.text = RankText;
-            m_TotalScore.text = AojiluService.DataSaver.PlaySaveData.TotalScore.ToString();
+            m_TotalScore.text = Mathf.RoundToInt(AojiluService.DataSaver.PlaySaveData.TotalScore / Constants.TotalScoreRate).ToString();
             m_MaxScore.text = AojiluService.DataSaver.PlaySaveData.MaxScore.ToString();
             m_TotalSukiman.text = AojiluService.DataSaver.PlaySaveData.TotalSukimaCount.ToString();
             m_MaxSukiman.text = AojiluService.DataSaver.PlaySaveData.MaxSukimaCount.ToString();
