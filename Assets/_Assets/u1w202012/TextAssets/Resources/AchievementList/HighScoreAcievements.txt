@@ -6,4 +6,8 @@ HighScore_7000,7000てんをこえた
 HighScore_8000,8000てんをこえた
 HighScore_9000,9000てんをこえた
 HighScore_10000,10000てんをこえた
-
+HighScore_11000,11000てんをこえた
+HighScore_12000,12000てんをこえた
+HighScore_13000,13000てんをこえた
+HighScore_14000,14000てんをこえた
+HighScore_15000,15000てんをこえた
