@@ -62,10 +62,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6545287710353056570, guid: e22fe8a9484d82041bfc0f934fb9fa9f,
+        type: 3}
+      propertyPath: m_saveData
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7148184338468971811, guid: e22fe8a9484d82041bfc0f934fb9fa9f,
         type: 3}
       propertyPath: m_Name
-      value: AchievementManager
+      value: AchievementManager Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22fe8a9484d82041bfc0f934fb9fa9f, type: 3}
