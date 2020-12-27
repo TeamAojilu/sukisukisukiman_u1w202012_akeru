@@ -1,0 +1,4 @@
+#id,DisplayName
+total_sukima_100,スキマンごうけい100たい
+total_sukima_500,スキマンごうけい500たい
+total_sukima_1000,スキマンごうけい1000たい

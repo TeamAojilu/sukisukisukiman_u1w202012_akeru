@@ -1,6 +1,6 @@
 #id,DisplayName
-high_sukima_8,スキマン 8体
-high_sukima_16,スキマン 8体
-high_sukima_24,スキマン 8体
-high_sukima_32,スキマン 8体
-high_sukima_40,スキマン 8体
+high_sukima_8,スキマン8たい
+high_sukima_16,スキマン16たい
+high_sukima_24,スキマン24たい
+high_sukima_32,スキマン32たい
+high_sukima_40,スキマン40たい
