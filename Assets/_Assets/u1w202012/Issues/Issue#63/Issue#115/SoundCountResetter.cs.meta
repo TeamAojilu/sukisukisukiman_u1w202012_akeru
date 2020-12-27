@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bca4755edadec154ba5cd497e436ae43
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_onIsPlayingChanged: {fileID: -6133858245510169575, guid: ad38d0245e53d4e7bb12beedddd95bf5,
+      type: 2}
+  - m_onSubmit: {fileID: 193066311287094200, guid: 3981e2dbdb31341f2b3087b05ece9abb,
+      type: 2}
+  - m_soundCount: {fileID: 11400000, guid: 6f823f6bf4e57b5459736744e5561c60, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
