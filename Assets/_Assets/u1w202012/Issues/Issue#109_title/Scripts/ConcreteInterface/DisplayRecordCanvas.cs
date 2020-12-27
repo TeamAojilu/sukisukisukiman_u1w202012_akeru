@@ -19,7 +19,8 @@ namespace Unity1Week202012.Aojilu.Title
         [SerializeField] Text m_MaxSukiman;
         [SerializeField] Text m_PlayNum;
         [SerializeField] Text m_AchievementNum;
-        
+
+        private int achievementNum;
         private void Awake()
         {
             AojiluService_Title.RankingDisplay = this;
@@ -42,7 +43,7 @@ namespace Unity1Week202012.Aojilu.Title
             m_MaxSukiman.text = AojiluService.DataSaver.PlaySaveData.MaxSukimaCount.ToString();
             m_PlayNum.text = AojiluService.DataSaver.PlaySaveData.PlayCount.ToString();
             var dataDictionary= AojiluService.DataSaver.PlaySaveData.AchivementDatas;
-            var achievementNum = 0;
+            achievementNum = 0;
             AchievementTexts achievementTexts = new AchievementTexts();
             foreach (var data in achievementTexts.GetAchievemenents())
             {
@@ -52,6 +53,12 @@ namespace Unity1Week202012.Aojilu.Title
                 }
             }
             m_AchievementNum.text = achievementNum.ToString();
+        }
+
+        public void Tweet()
+        {
+            var tweetText = "実績を"+achievementNum+"個解除!!ランクは"+Services.UserRankCalculator.GetRank()+"!!";
+            naichilab.UnityRoomTweet.Tweet ("sukisukisukiman", tweetText, "unity1week","すきすきスキマん");
         }
     }
 }
