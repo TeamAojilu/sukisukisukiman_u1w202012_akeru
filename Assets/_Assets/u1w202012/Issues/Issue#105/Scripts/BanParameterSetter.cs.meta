@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 081c9f0b707e4fd4ba155137df8353b2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_paramterText: {fileID: 4900000, guid: b723a9532fe32ee4997d10533c5e9450, type: 3}
+  - m_onEvaluated: {fileID: 915520494308748148, guid: 07906ad503028fa46a9dec5478ddda08,
+      type: 2}
+  - m_onIsPlayingChanged: {fileID: -6133858245510169575, guid: ad38d0245e53d4e7bb12beedddd95bf5,
+      type: 2}
+  - m_count: {fileID: 11400000, guid: aeb070ca8fdb4984a9fc6dad7a6469de, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

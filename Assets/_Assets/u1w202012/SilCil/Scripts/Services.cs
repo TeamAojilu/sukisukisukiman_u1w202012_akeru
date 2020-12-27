@@ -13,6 +13,7 @@ namespace Unity1Week202012
         public static IPieceObjectFactory PieceObjectFactory { get; set; }
         public static IInitialPieceGenerator InitialPieceGenerator { get; set; } = new SampleInitialPieceGenerator();
         public static IPoppedPieceGenerator PoppedPieceGenerator { get; set; } = new SamplePoppedPieceGenerator();
+        public static IUserRankCalculator UserRankCalculator { get; set; }
         
         public static IScoreCalculator ScoreCalculator { get; set; }
         public static IBonusCalculator BonusCalculator { get; set; }
@@ -37,6 +38,7 @@ namespace Unity1Week202012
             PieceObjectFactory = null;
             InitialPieceGenerator = new SampleInitialPieceGenerator();
             PoppedPieceGenerator = new SamplePoppedPieceGenerator();
+            UserRankCalculator = null;
 
             ScoreCalculator = null;
             BonusCalculator = null;
