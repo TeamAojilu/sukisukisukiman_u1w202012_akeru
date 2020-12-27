@@ -120,16 +120,16 @@ MonoBehaviour:
     - C
   - key: B
     enables:
-    - B
     - C
+    - B
   - key: A
     enables:
-    - A
-    - B
     - C
+    - B
+    - A
   - key: S
     enables:
-    - S
-    - A
-    - B
     - C
+    - B
+    - A
+    - S

@@ -7,6 +7,8 @@ namespace Unity1Week202012
 {
     public class NewPieceHolder
     {
+        private const float HoldingExpand = 1.1f;
+
         private readonly VariableBool m_holding = default;
         private readonly int m_pieceLayer = default;
         private readonly PieceRespawner m_pieceRespawner = default;
@@ -72,10 +74,13 @@ namespace Unity1Week202012
             // つかむ処理.
             m_holding.Value = true;
             m_holdingPiece = piece;
-            m_offset = m_holdingPiece.CashedTransform.position - mouseWorldPosition;
+            m_offset = m_holdingPiece.CashedTransform.position - mouseWorldPosition + Vector3.back; // 他のピースより全面に表示するためにz座標を加えた.
             m_startPosition = Services.PiecePosition.GetOriginPosition(m_holdingPiece);
             m_piecePlacement.RemovePiece(m_holdingPiece);
             m_pieceRespawner.DisablePlaces = Services.PiecePosition.GetBlockPositions(m_holdingPiece, m_startPosition).ToArray();
+
+            // 掴んでいる時にはスケールを大きくする.
+            m_holdingPiece.CashedTransform.localScale = new Vector3(HoldingExpand, HoldingExpand, 1f);
 
             return true;
         }
@@ -96,6 +101,7 @@ namespace Unity1Week202012
 
         private void SetHoldingFalse()
         {
+            m_holdingPiece.CashedTransform.localScale = Vector3.one; // 大きさを元に戻す
             m_pieceRespawner.DisablePlaces = null;
             m_holding.Value = false;
             m_holdingPiece = null;
