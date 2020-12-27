@@ -23,35 +23,44 @@ namespace Unity1Week202012.Aojilu.Title
         private void Awake()
         {
             AojiluService_Title.SettingDisplay = this;
+
+            foreach(var slider in m_sliderList)
+            {
+                slider.minValue = 0;
+                slider.maxValue = 1;
+                slider.value = 0.5f;
+                SetSetting();
+            }
         }
         public void Display()
         {
             m_myCanvas.SetActive(true);
 
-            GetSetting();
+            //GetSetting();
         }
+        float ConvertVolume2dB(float volume) => Mathf.Clamp(20f * Mathf.Log10(Mathf.Clamp(volume, 0f, 1f)), -80f, 0f);
 
-        void GetSetting()
-        {
-            if (m_mixier.GetFloat(m_masterPath, out var master))
-            {
-                m_sliderList[0].value = master;
-            }
-            if (m_mixier.GetFloat(m_bgmPath, out var bgm))
-            {
-                m_sliderList[1].value = bgm;
-            }
-            if (m_mixier.GetFloat(m_sePath, out var se))
-            {
-                m_sliderList[2].value = se;
-            }
-        }
+        //void GetSetting()
+        //{
+        //    if (m_mixier.GetFloat(m_masterPath, out var master))
+        //    {
+        //        m_sliderList[0].value = master;
+        //    }
+        //    if (m_mixier.GetFloat(m_bgmPath, out var bgm))
+        //    {
+        //        m_sliderList[1].value = bgm;
+        //    }
+        //    if (m_mixier.GetFloat(m_sePath, out var se))
+        //    {
+        //        m_sliderList[2].value = se;
+        //    }
+        //}
 
         public void SetSetting()
         {
-            m_mixier.SetFloat(m_masterPath, m_sliderList[0].value);
-            m_mixier.SetFloat(m_bgmPath, m_sliderList[1].value);
-            m_mixier.SetFloat(m_sePath, m_sliderList[2].value);
+            m_mixier.SetFloat(m_masterPath,ConvertVolume2dB( m_sliderList[0].value));
+            m_mixier.SetFloat(m_bgmPath,ConvertVolume2dB( m_sliderList[1].value));
+            m_mixier.SetFloat(m_sePath,ConvertVolume2dB( m_sliderList[2].value));
         }
     }
 }

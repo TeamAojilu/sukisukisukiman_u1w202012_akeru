@@ -1,0 +1,2 @@
+#id,DisplayName
+piece_trashed,はじめてピースをすてた

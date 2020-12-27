@@ -12,6 +12,11 @@ namespace Unity1Week202012
 
         private Dictionary<string, AchievementData> m_achievements = new Dictionary<string, AchievementData>();
 
+        public IEnumerable<AchievementData> GetAchievemenents()
+        {
+            return m_achievements.Values;
+        }
+        
         public bool TryGetAchievementData(string id, out AchievementData data)
         {
             return m_achievements.TryGetValue(id, out data);

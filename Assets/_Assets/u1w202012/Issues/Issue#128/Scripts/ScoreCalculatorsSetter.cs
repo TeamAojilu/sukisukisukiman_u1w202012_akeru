@@ -47,6 +47,7 @@ namespace Unity1Week202012.Issue128
 
         private IColorGroupCountReciever m_colorCountReciever = default;
         private IShapeGroupCountReciever m_shapeCountReciever = default;
+        private float m_multiply = 2f;
 
         private void Start()
         {
@@ -95,7 +96,7 @@ namespace Unity1Week202012.Issue128
                 var calculator = new SameColorAverageCalculator(color);
                 calculator.OnEvaluated += (_, x) => { m_colors[color].Value = (float)x; };
                 calculator.OnGroupChecked += (_, x) => m_colorCountReciever?.Apply(color, x);
-                yield return new ScoreMultiplier(m_scoreMultiply * count, calculator);
+                yield return new ScoreMultiplier(m_scoreMultiply * count * m_multiply, calculator);
             }
 
             count = 0;
@@ -105,7 +106,7 @@ namespace Unity1Week202012.Issue128
                 var calculator = new SameShapeAverageCalculator(shape);
                 calculator.OnEvaluated += (_, x) => { m_shapes[shape].Value = (float)x; };
                 calculator.OnGroupChecked += (_, x) => m_shapeCountReciever?.Apply(shape, x);
-                yield return new ScoreMultiplier(m_scoreMultiply * count, calculator);
+                yield return new ScoreMultiplier(m_scoreMultiply * count * m_multiply, calculator);
             }
         }
 

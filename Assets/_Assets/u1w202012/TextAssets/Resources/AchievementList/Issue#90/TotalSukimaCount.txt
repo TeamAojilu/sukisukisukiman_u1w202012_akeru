@@ -1,4 +1,15 @@
 #id,DisplayName
-total_sukima_100,スキマん ごうけい 100たい
-total_sukima_500,スキマん ごうけい 500たい
-total_sukima_1000,スキマん ごうけい 1000たい
+total_sukima_100,スキマん ごうけい 100ぴき
+total_sukima_200,スキマん ごうけい 200ぴき
+total_sukima_300,スキマん ごうけい 300ぴき
+total_sukima_400,スキマん ごうけい 400ぴき
+total_sukima_500,スキマん ごうけい 500ぴき
+total_sukima_600,スキマん ごうけい 600ぴき
+total_sukima_700,スキマん ごうけい 700ぴき
+total_sukima_800,スキマん ごうけい 800ぴき
+total_sukima_900,スキマん ごうけい 900ぴき
+total_sukima_1000,スキマん ごうけい 1000ひき
+total_sukima_2000,スキマん ごうけい 2000ひき
+total_sukima_3000,スキマん ごうけい 3000ひき
+total_sukima_4000,スキマん ごうけい 4000ひき
+total_sukima_5000,スキマん ごうけい 5000ひき
