@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 3746380568861201700, guid: 5e4f9d7e2884bb841ae707d0d553221f,
         type: 3}
       propertyPath: m_Name
-      value: Issue#141_Debug_PieceThrowPenaltyCanvas
+      value: Issue#141_Debug_PieceThrowPenaltyCanvas Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3746380568861201720, guid: 5e4f9d7e2884bb841ae707d0d553221f,
         type: 3}

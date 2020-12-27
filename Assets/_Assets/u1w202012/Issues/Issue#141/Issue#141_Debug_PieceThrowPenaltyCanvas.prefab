@@ -316,7 +316,7 @@ MonoBehaviour:
     m_variable: {fileID: -6515612823050193591, guid: f15cae261b1c62b4994041310fb5940d,
       type: 2}
   m_isBusy:
-    m_value: 1
+    m_value: 0
     m_variable: {fileID: 0}
   m_duration:
     m_value: -1

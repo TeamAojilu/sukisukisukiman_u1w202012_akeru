@@ -1,13 +1,36 @@
 #id,DisplayName
+red_chain_5,あかいろ 5こ
 red_chain_10,あかいろ 10こ
 red_chain_15,あかいろ 15こ
 red_chain_20,あかいろ 20こ
+red_chain_25,あかいろ 25こ
+red_chain_30,あかいろ 30こ
+red_chain_35,あかいろ 35こ
+red_chain_40,あかいろ 40こ
+
+blue_chain_5,あおいろ 5こ
 blue_chain_10,あおいろ 10こ
 blue_chain_15,あおいろ 15こ
 blue_chain_20,あおいろ 20こ
+blue_chain_25,あおいろ 25こ
+blue_chain_30,あおいろ 30こ
+blue_chain_35,あおいろ 35こ
+blue_chain_40,あおいろ 40こ
+
+green_chain_5,みどりいろ 5こ
 green_chain_10,みどりいろ 10こ
 green_chain_15,みどりいろ 15こ
 green_chain_20,みどりいろ 20こ
-yellow_chain_10,きいろ 10こ
-yellow_chain_15,きいろ 15こ
-yellow_chain_20,きいろ 20こ
+green_chain_25,みどりいろ 25こ
+green_chain_30,みどりいろ 30こ
+green_chain_35,みどりいろ 35こ
+green_chain_40,みどりいろ 40こ
+
+yeloow_chain_5,きいろ 5こ
+yeloow_chain_10,きいろ 10こ
+yeloow_chain_15,きいろ 15こ
+yeloow_chain_20,きいろ 20こ
+yeloow_chain_25,きいろ 25こ
+yeloow_chain_30,きいろ 30こ
+yeloow_chain_35,きいろ 35こ
+yeloow_chain_40,きいろ 40こ

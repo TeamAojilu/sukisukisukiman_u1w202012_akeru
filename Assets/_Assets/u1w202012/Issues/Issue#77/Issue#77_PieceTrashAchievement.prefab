@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &902882910522392413
+--- !u!1 &972408273947981023
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 902882910522392415}
-  - component: {fileID: 902882910522392414}
+  - component: {fileID: 2899003829736789403}
+  - component: {fileID: 6481364144550026932}
   m_Layer: 0
-  m_Name: AchivementPublish_highScore
+  m_Name: Issue#77_PieceTrashAchievement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &902882910522392415
+--- !u!4 &2899003829736789403
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 902882910522392413}
+  m_GameObject: {fileID: 972408273947981023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &902882910522392414
+--- !u!114 &6481364144550026932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 902882910522392413}
+  m_GameObject: {fileID: 972408273947981023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6d7b202a954a19409332c1a26c6bf2b, type: 3}
+  m_Script: {fileID: 11500000, guid: a991f1688fcfe54498396a07a8fb6bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_achievementEvent: {fileID: 11400000, guid: dae8f3e1e156d6b43856e23c6caf7f2e, type: 2}
-  m_submitEvent: {fileID: -2844515426072420376, guid: c08af5b4aa318f34681a410ad88cd864,
+  m_onAchived: {fileID: 11400000, guid: dae8f3e1e156d6b43856e23c6caf7f2e, type: 2}
+  m_onPieceTrashed: {fileID: -1766791704655627289, guid: fb6a6a230368b47589ad981f3b23b443,
     type: 2}
-  m_score: {fileID: 6379461148048769281, guid: de0cc52ba1be240c7acd3a92e8f2dbc9, type: 2}
-  m_achieveScoreList: a00f00008813000070170000581b0000401f00002823000010270000
-  m_achieveId: HighScore_{0}
