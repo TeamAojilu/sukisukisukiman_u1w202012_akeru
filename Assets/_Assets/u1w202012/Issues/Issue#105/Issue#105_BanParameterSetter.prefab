@@ -105,12 +105,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ranks:
   - m_id: S
-    m_achivements: 10
+    m_achivements: 45
   - m_id: A
-    m_achivements: 7
+    m_achivements: 35
   - m_id: B
-    m_achivements: 5
+    m_achivements: 25
   - m_id: C
-    m_achivements: 3
+    m_achivements: 15
   - m_id: D
     m_achivements: 0
