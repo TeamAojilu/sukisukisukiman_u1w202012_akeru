@@ -19,10 +19,10 @@ namespace Unity1Week202012.Aojilu.Title
             var dataDictionary= AojiluService.DataSaver.PlaySaveData.AchivementDatas;
             var result = new Dictionary<string, bool>();
 
-            AchievementTexts achi = new AchievementTexts();
+            AchievementTexts achievementTexts = new AchievementTexts();
             foreach (var data in dataDictionary)
             {
-                if (!achi.TryGetAchievementData(data.Key, out var achieveData)) continue;
+                if (!achievementTexts.TryGetAchievementData(data.Key, out var achieveData)) continue;
                 result.Add(achieveData.m_displayName, dataDictionary[achieveData.m_id]);
             }
 
