@@ -1,0 +1,5 @@
+#id,DisplayName
+player_rank_C,ランクC！
+player_rank_B,ランクB！
+player_rank_A,ランクA！
+player_rank_S,ランクS！
