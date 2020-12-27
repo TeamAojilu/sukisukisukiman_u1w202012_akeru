@@ -17,6 +17,7 @@ namespace Unity1Week202012
             m_OnPieceThrown?.Subscribe(() =>
             {
                 m_playTime.Value -= m_decrease;
+                ShowEffect();
             }).DisposeOnDestroy(gameObject);
         }
 
