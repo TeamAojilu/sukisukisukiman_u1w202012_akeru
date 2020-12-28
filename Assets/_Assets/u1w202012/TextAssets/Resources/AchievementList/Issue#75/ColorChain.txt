@@ -26,11 +26,11 @@ green_chain_30,みどりいろ 30こ
 green_chain_35,みどりいろ 35こ
 green_chain_40,みどりいろ 40こ
 
-yeloow_chain_5,きいろ 5こ
-yeloow_chain_10,きいろ 10こ
-yeloow_chain_15,きいろ 15こ
-yeloow_chain_20,きいろ 20こ
-yeloow_chain_25,きいろ 25こ
-yeloow_chain_30,きいろ 30こ
-yeloow_chain_35,きいろ 35こ
-yeloow_chain_40,きいろ 40こ
+yellow_chain_5,きいろ 5こ
+yellow_chain_10,きいろ 10こ
+yellow_chain_15,きいろ 15こ
+yellow_chain_20,きいろ 20こ
+yellow_chain_25,きいろ 25こ
+yellow_chain_30,きいろ 30こ
+yellow_chain_35,きいろ 35こ
+yellow_chain_40,きいろ 40こ
