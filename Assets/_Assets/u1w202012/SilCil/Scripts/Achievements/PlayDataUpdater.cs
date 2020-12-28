@@ -19,7 +19,13 @@ namespace Unity1Week202012
 
         private void OnEvaluated()
         {
-            AojiluService.DataSaver.PlaySaveData.MaxScore = Mathf.Max(AojiluService.DataSaver.PlaySaveData.MaxScore, m_score);
+            int maxScore = AojiluService.DataSaver.PlaySaveData.MaxScore;
+            if(m_score > maxScore)
+            {
+                if(maxScore != 0) AchievementsManager.Instance?.AchievementNotification?.Show(new AchievementData("best_score", "ベストスコア！"));
+                maxScore = m_score;
+            }
+            AojiluService.DataSaver.PlaySaveData.MaxScore = maxScore;
             AojiluService.DataSaver.PlaySaveData.MaxSukimaCount = Mathf.Max(AojiluService.DataSaver.PlaySaveData.MaxSukimaCount, m_sukimaCount);
             AojiluService.DataSaver.PlaySaveData.PlayCount++;
             AojiluService.DataSaver.PlaySaveData.TotalScore += (int)(m_score * Constants.TotalScoreRate);
