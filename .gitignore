@@ -72,3 +72,6 @@ crashlytics-build.properties
 
 # JetBrains
 /.idea
+
+# AudioAssets
+/Assets/_Assets/u1w202012/Audio/SE/
