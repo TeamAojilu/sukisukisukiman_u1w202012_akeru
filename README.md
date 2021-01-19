@@ -2,7 +2,7 @@
 
 Unity1Weekゲームジャム「あける」
 
-![![](Documents/sukiman.gif)](https://unityroom.com/games/sukisukisukiman)
+[![](Documents/sukiman.gif)](https://unityroom.com/games/sukisukisukiman)
 
 ## ちーむaojilu
 - aojilu: リーダー、システム
