@@ -73,5 +73,32 @@ crashlytics-build.properties
 # JetBrains
 /.idea
 
-# AudioAssets
+# Assets Ignore
 /Assets/_Assets/u1w202012/Audio/SE/
+/Assets/_Assets/u1w202012/Audio/SE.meta
+/Assets/Editor/
+/Assets/Editor.meta
+/Assets/ExampleAssets/
+/Assets/ExampleAssets.meta
+/Assets/Materials/
+/Assets/Materials.meta
+/Assets/Plugins/
+/Assets/Plugins.meta
+/Assets/Presets/
+/Assets/Presets.meta
+/Assets/Scenes/
+/Assets/Scenes.meta
+/Assets/Scripts/
+/Assets/Scripts.meta
+/Assets/ScriptTemplates
+/Assets/ScriptTemplates.meta
+/Assets/Settings/
+/Assets/Settings.meta
+/Assets/TextMesh Pro/
+/Assets/TextMesh Pro.meta
+/Assets/TutorialInfo/
+/Assets/TutorialInfo.meta
+/Assets/TweeWithScreenShot/
+/Assets/TweeWithScreenShot.meta
+/Assets/naichilab/
+/Assets/naichilab.meta
