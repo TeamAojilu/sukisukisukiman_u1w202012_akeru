@@ -1,32 +1,18 @@
-# UnityTeamDevTemplate
-Unityで共同開発(チーム開発)を行う際、円滑にスタートダッシュを切れるようにサポートをするテンプレートリポジトリです。
+# すきすきスキマん
 
+Unity1Weekゲームジャム「あける」
 
-```
-[TODO]
-ここにアイコン画像入れたい
+![![](Documents/sukiman.gif)](https://unityroom.com/games/sukisukisukiman)
 
-できれば名前も変えたい
-```
+## ちーむaojilu
+- aojilu: リーダー、システム
+- SilCil: システム統括
+- kugi: デザイン、チームビルド、システム
+- すなじろ: サウンド
 
-# テンプレート概要
-
-このテンプレートは
-
-- 設計の共通認識(共通言語)を統一する際に役立つ、[**SilCilSystem**](https://teamaojilu.github.io/UnityTeamDevTemplate/)
-- GitHubIssuesを使ったタスク管理のための**IssueTemplate**
-- チーム内での決め事や共通認識をGitHubWikiにまとめて置いておく際に役立つ**WikiTemplate**
-
-からなります。
-
-あくまでテンプレートなので、これを用いれば共同開発が必ずうまく行くという訳ではありません。
-
-# 使用するには
-[**Use this template**](https://github.com/kugimasa/UnityTeamDevTemplate/generate) からリポジトリを新規作成できます。
-
-# ライセンス
-
-```
-[TODO]
-とりあえず今はMITを使っている
-```
+## アセット
+- [効果音ラボ](https://soundeffect-lab.info/) 様: SEとして使用させていただきました。
+- [魔王魂](https://maoudamashii.jokersounds.com/) 様: SEとして使用させていただきました。
+- [Asterism](https://www.asterism-m.com/about/) 様: *[ゆるもじフォント](https://www.asterism-m.com/font/bmp-2byte/)* を使用させていただきました。
+- [naichi](https://github.com/naichilab) 様: *[unityroom-tweet](https://github.com/naichilab/unityroom-tweet)* を使用させていただきました。
+- [UnityTeamDevTemplate](https://github.com/TeamAojilu/UnityTeamDevTemplate) by ちーむaojilu
