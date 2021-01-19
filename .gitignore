@@ -104,3 +104,7 @@ crashlytics-build.properties
 /Assets/naichilab.meta
 /Assets/Readme.asset
 /Assets/Readme.asset.meta
+
+# Assets Ignore Font
+/Assets/_Assets/u1w202012/Issues/Issue#23/Font/
+/Assets/_Assets/u1w202012/Issues/Issue#23/Font.meta
